@@ -6,6 +6,8 @@
 # not licensing it to others. Notice the "All rights reserved" in the
 # copyright notice at the top.
 
+import os
+
 class Report:
     """Metadata for a single Technical Report as extracted from a BibTeX
     record."""
@@ -33,6 +35,10 @@ class Report:
         number_components = self._fields["number"].split("-")
         self._seq_num = number_components[-1]
         self._first_dir = number_components[-2]
+
+    def target_directory(self):
+        """Returns the name of the target directory."""
+        return self._first_dir + "/" + self._seq_num
 
     def _find_fields(self, partial):
         """Extracts the BibTeX fields from a partial BibTeX record
@@ -129,12 +135,21 @@ def load_bib_file(bib_file="reports.bib"):
         reports.append(Report("".join(current).strip()))
     return reports
 
+def make_dirs(reports):
+    """Create any directories that we need that don't already exist.
+
+    Keyword arguments:
+    reports - An iterable of Report objects
+    """
+    for r in reports:
+        directory = r.target_directory()
+        if not os.path.isdir(directory):
+            os.makedirs(directory)
+
 def main():
     reports = load_bib_file()
     reports.sort()
+    make_dirs(reports)
 
 if __name__ == "__main__":
-    reports = load_bib_file()
-    print("Count:", len(reports))
-    for r in reports:
-        print(r)
+    main()
