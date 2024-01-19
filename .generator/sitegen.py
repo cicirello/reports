@@ -7,6 +7,7 @@
 # copyright notice at the top.
 
 import os
+from templates import *
 
 class Report:
     """Metadata for a single Technical Report as extracted from a BibTeX
@@ -39,6 +40,25 @@ class Report:
     def target_directory(self):
         """Returns the name of the target directory."""
         return self._first_dir + "/" + self._seq_num
+
+    def output_bibtex_file(self):
+        """Creates a bibtex file for the report."""
+        name_no_extension = self.target_directory() + "/" + self._fields["number"]
+        filename = name_no_extension + ".bib"
+        with open(filename, "w") as f:
+            f.write(
+                bibtex_file_template.format(
+                    self._fields["number"],
+                    self._fields["title"],
+                    self._fields["author"],
+                    self._fields["year"],
+                    self._fields["month"],
+                    self._fields["number"],
+                    self._fields["institution"],
+                    url_root + name_no_extension + ".pdf",
+                    self._fields["abstract"]
+                )
+            )
 
     def _find_fields(self, partial):
         """Extracts the BibTeX fields from a partial BibTeX record
@@ -146,10 +166,20 @@ def make_dirs(reports):
         if not os.path.isdir(directory):
             os.makedirs(directory)
 
+def make_bib_files(reports):
+    """Creates BibTeX files for all of the reports.
+
+    Keyword arguments:
+    reports - An iterable of Report objects
+    """
+    for r in reports:
+        r.output_bibtex_file()
+
 def main():
     reports = load_bib_file()
     reports.sort()
     make_dirs(reports)
+    make_bib_files(reports)
 
 if __name__ == "__main__":
     main()
