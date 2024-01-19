@@ -43,9 +43,7 @@ class Report:
 
     def output_bibtex_file(self):
         """Creates a bibtex file for the report."""
-        name_no_extension = self.target_directory() + "/" + self._fields["number"]
-        filename = name_no_extension + ".bib"
-        with open(filename, "w") as f:
+        with open(self._bib_file(), "w") as f:
             f.write(
                 bibtex_file_template.format(
                     self._fields["number"],
@@ -55,10 +53,18 @@ class Report:
                     self._fields["month"],
                     self._fields["number"],
                     self._fields["institution"],
-                    url_root + name_no_extension + ".pdf",
+                    url_root + self._pdf_file(),
                     self._fields["abstract"]
                 )
             )
+
+    def _pdf_file(self):
+        """Forms the name of the pdf file, relative to the root."""
+        return self.target_directory() + "/" + self._fields["number"] + ".pdf"
+
+    def _bib_file(self):
+        """Forms the name of the bib file, relative to the root."""
+        return self.target_directory() + "/" + self._fields["number"] + ".bib"
 
     def _find_fields(self, partial):
         """Extracts the BibTeX fields from a partial BibTeX record
