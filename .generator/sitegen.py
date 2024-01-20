@@ -62,7 +62,9 @@ class Report:
     def output_svg_file(self):
         """Creates an svg file for the report."""
         with open(self._full_file(".svg"), "w") as f:
-            f.write(build_svg(self._fields["number"], self._fields["title"]))
+            svg = build_svg(self._fields["number"], self._fields["title"])
+            svg = svg.replace("\n", "")
+            f.write(svg)
 
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""
