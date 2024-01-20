@@ -8,6 +8,7 @@
 
 import os
 from templates import *
+from text_length import calculateTextLength110, calculateTextLength110Weighted
 
 class Report:
     """Metadata for a single Technical Report as extracted from a BibTeX
@@ -43,7 +44,7 @@ class Report:
 
     def output_bibtex_file(self):
         """Creates a bibtex file for the report."""
-        with open(self._bib_file(), "w") as f:
+        with open(self._full_file(".bib"), "w") as f:
             f.write(
                 bibtex_file_template.format(
                     self._fields["number"],
@@ -53,18 +54,19 @@ class Report:
                     self._fields["month"],
                     self._fields["number"],
                     self._fields["institution"],
-                    url_root + self._pdf_file(),
+                    url_root + self._full_file(".pdf"),
                     self._fields["abstract"]
                 )
             )
 
-    def _pdf_file(self):
-        """Forms the name of the pdf file, relative to the root."""
-        return self.target_directory() + "/" + self._fields["number"] + ".pdf"
+    def output_svg_file(self):
+        """Creates an svg file for the report."""
+        with open(self._full_file(".svg"), "w") as f:
+            f.write(build_svg(self._fields["number"], self._fields["title"]))
 
-    def _bib_file(self):
-        """Forms the name of the bib file, relative to the root."""
-        return self.target_directory() + "/" + self._fields["number"] + ".bib"
+    def _full_file(self, extension):
+        """Forms the name of a file, relative to the root."""
+        return self.target_directory() + "/" + self._fields["number"] + extension
 
     def _find_fields(self, partial):
         """Extracts the BibTeX fields from a partial BibTeX record
@@ -181,11 +183,216 @@ def make_bib_files(reports):
     for r in reports:
         r.output_bibtex_file()
 
+def make_svg_files(reports):
+    """Creates svg files for all of the reports.
+
+    Keyword arguments:
+    reports - An iterable of Report objects
+    """
+    for r in reports:
+        r.output_svg_file()
+
+def build_svg(number, title):
+    """Builds an SVG for the header of a report page.
+
+    Keyword arguments:
+    number - the texh report number as a string
+    title - the title of the report
+    """
+    max_length = 2160
+    line_y_values = [278, 449, 620, 791, 962]
+    report_str = "Technical Report " + number
+    title_length = calculateTextLength110(title)
+    if title_length <= max_length:
+        title_block = title_line.format(
+            line_y_values[2],
+            title,
+            title_length
+        )
+        return title_image_svg.format(
+            report_str,
+            calculateTextLength110(report_str),
+            title_block
+        )
+    t1, t2, L = _partition_title_2(title)
+    if L <= max_length:
+        title_block = title_line.format(
+                line_y_values[1], t1, calculateTextLength110(t1)
+            ) + title_line.format(
+                line_y_values[2], t2, calculateTextLength110(t2)
+            )
+        return title_image_svg.format(
+            report_str,
+            calculateTextLength110(report_str),
+            title_block
+        )
+    t1, t2, t3, L = _partition_title_3(title)
+    if L <= max_length:
+        title_block = title_line.format(
+                line_y_values[1], t1, calculateTextLength110(t1)
+            ) + title_line.format(
+                line_y_values[2], t2, calculateTextLength110(t2)
+            ) + title_line.format(
+                line_y_values[3], t3, calculateTextLength110(t3)
+            )
+        return title_image_svg.format(
+            report_str,
+            calculateTextLength110(report_str),
+            title_block
+        )
+    t1, t2, t3, t4, L = _partition_title_4(title)
+    if L <= max_length:
+        title_block = title_line.format(
+                line_y_values[0], t1, calculateTextLength110(t1)
+            ) + title_line.format(
+                line_y_values[1], t2, calculateTextLength110(t2)
+            ) + title_line.format(
+                line_y_values[2], t3, calculateTextLength110(t3)
+            ) + title_line.format(
+                line_y_values[3], t4, calculateTextLength110(t4)
+            )
+        return title_image_svg.format(
+            report_str,
+            calculateTextLength110(report_str),
+            title_block
+        )
+    t1, t2, t3, t4, t5, L = _partition_title_5(title)
+    if L <= max_length:
+        title_block = title_line.format(
+                line_y_values[0], t1, calculateTextLength110(t1)
+            ) + title_line.format(
+                line_y_values[1], t2, calculateTextLength110(t2)
+            ) + title_line.format(
+                line_y_values[2], t3, calculateTextLength110(t3)
+            ) + title_line.format(
+                line_y_values[3], t4, calculateTextLength110(t4)
+            ) + title_line.format(
+                line_y_values[4], t5, calculateTextLength110(t5)
+            )
+        return title_image_svg.format(
+            report_str,
+            calculateTextLength110(report_str),
+            title_block
+        )
+    raise Exception("Failed to fit title on 5 lines:", title)
+
+def _partition_title_2(title):
+    parts = title.split()
+    min_delta = 99999999
+    which = 0
+    for i in range(1, len(parts)-1):
+        t1 = " ".join(parts[:i])
+        t2 = " ".join(parts[i:])
+        delta = abs(calculateTextLength110(t1) - calculateTextLength110(t2))
+        if delta < min_delta:
+            min_delta = delta
+            which = i
+    t1 = " ".join(parts[:which])
+    t2 = " ".join(parts[which:])
+    return t1, t2, max(calculateTextLength110(t1), calculateTextLength110(t2))
+
+def _partition_title_3(title):
+    parts = title.split()
+    min_delta = 99999999
+    which_i = 0
+    which_j = 0
+    the_longest = 0
+    for i in range(1, len(parts)-1):
+        for j in range(i+1, len(parts)-1):
+            t1 = " ".join(parts[:i])
+            t2 = " ".join(parts[i:j])
+            t3 = " ".join(parts[j:])
+            L1 = calculateTextLength110(t1)
+            L2 = calculateTextLength110(t2)
+            L3 = calculateTextLength110(t3)
+            longest = max(L1, L2, L3)
+            delta = longest - min(L1, L2, L3)
+            if delta < min_delta:
+                min_delta = delta
+                which_i = i
+                which_j = j
+                the_longest = longest
+    t1 = " ".join(parts[:which_i])
+    t2 = " ".join(parts[which_i:which_j])
+    t3 = " ".join(parts[which_j:])
+    return t1, t2, t3, the_longest
+
+def _partition_title_4(title):
+    parts = title.split()
+    min_delta = 99999999
+    which_i = 0
+    which_j = 0
+    which_k = 0
+    the_longest = 0
+    for i in range(1, len(parts)-1):
+        for j in range(i+1, len(parts)-1):
+            for k in range(j+1, len(parts)-1):
+                t1 = " ".join(parts[:i])
+                t2 = " ".join(parts[i:j])
+                t3 = " ".join(parts[j:k])
+                t4 = " ".join(parts[k:])
+                L1 = calculateTextLength110(t1)
+                L2 = calculateTextLength110(t2)
+                L3 = calculateTextLength110(t3)
+                L4 = calculateTextLength110(t4)
+                longest = max(L1, L2, L3, L4)
+                delta = longest - min(L1, L2, L3, L4)
+                if delta < min_delta:
+                    min_delta = delta
+                    which_i = i
+                    which_j = j
+                    which_k = k
+                    the_longest = longest
+    t1 = " ".join(parts[:which_i])
+    t2 = " ".join(parts[which_i:which_j])
+    t3 = " ".join(parts[which_j:which_k])
+    t4 = " ".join(parts[which_k:])
+    return t1, t2, t3, t4, the_longest
+
+def _partition_title_5(title):
+    parts = title.split()
+    min_delta = 99999999
+    which_i = 0
+    which_j = 0
+    which_k = 0
+    which_x = 0
+    the_longest = 0
+    for i in range(1, len(parts)-1):
+        for j in range(i+1, len(parts)-1):
+            for k in range(j+1, len(parts)-1):
+                for x in range(k+1, len(parts)-1):
+                    t1 = " ".join(parts[:i])
+                    t2 = " ".join(parts[i:j])
+                    t3 = " ".join(parts[j:k])
+                    t4 = " ".join(parts[k:x])
+                    t5 = " ".join(parts[x:])
+                    L1 = calculateTextLength110(t1)
+                    L2 = calculateTextLength110(t2)
+                    L3 = calculateTextLength110(t3)
+                    L4 = calculateTextLength110(t4)
+                    L5 = calculateTextLength110(t5)
+                    longest = max(L1, L2, L3, L4, L5)
+                    delta = longest - min(L1, L2, L3, L4, L5)
+                    if delta < min_delta:
+                        min_delta = delta
+                        which_i = i
+                        which_j = j
+                        which_k = k
+                        which_x = x
+                        the_longest = longest
+    t1 = " ".join(parts[:which_i])
+    t2 = " ".join(parts[which_i:which_j])
+    t3 = " ".join(parts[which_j:which_k])
+    t4 = " ".join(parts[which_k:which_x])
+    t5 = " ".join(parts[which_x:])
+    return t1, t2, t3, t4, t5, the_longest
+
 def main():
     reports = load_bib_file()
     reports.sort()
     make_dirs(reports)
     make_bib_files(reports)
+    make_svg_files(reports)
 
 if __name__ == "__main__":
     main()
