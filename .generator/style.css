@@ -1,0 +1,36 @@
+header, nav, footer, article, section { display: block; }
+footer { clear: both; }
+body { background-color: #f6f0bb; font-family: Georgia, Times, "Times New Roman", serif; }
+#siteheader, footer { background-color: #bfd9bf; }
+#siteheader, footer, article { border: 2px solid #4CAF50; border-radius: 25px; margin-bottom: 5px; padding: 8px; }
+h1, h2, h3, h4, h5, h6, strong { color: #862d2d; }
+#siteheader h2 { font-size: 2em; text-align: center; }
+img.respimg { max-width: 100%; height: auto; }
+a { color: #005500; }
+a:visited { color:#862d2d; }
+#toggle { position: absolute; left: -100vw; display: none; }
+nav { margin: 0px; padding: 0; overflow: hidden; }
+nav div, #menu-icon { float: left; margin-right: 8px; }
+nav div a, #menu-icon { display: block; background-color: #f6f0bb; border: 2px solid #4CAF50; text-decoration: none; text-align: center; color: #1c2833; }
+nav div a { border-bottom: none; border-radius: 12px 12px 0px 0px; padding: 6px 12px; }
+#menu-icon { cursor: pointer; display: none; }
+nav div a:visited { color: #1c2833; }
+nav div a:hover:not(.active), #menu-icon:hover:not(.active) { background-color: #305030; color: white; }
+nav div a.active { background-color: #4CAF50; }
+article li { margin-bottom: 12px; margin-top: 12px; }
+.publist li { margin-bottom: 16px; }
+.publist ul { margin-bottom: 32px; }
+section { margin-top: 30px; }
+#pubyears { list-style-type: none; margin: 0px; padding: 0px; overflow: auto; }
+#pubyears li { float: left; margin: 0px 12px 12px 0px; }
+#copyright { text-align: center; color: #862d2d; }
+@media screen and (max-width:600px){
+nav div a:not(.active) { display: none; }
+#toggle:checked ~ div a:not(.active) { display: block; }
+#menu-icon { display: block; padding: 3px 7px 3px 7px; border-radius: 4px; }
+}
+details, details[open] summary {margin-bottom:12pt;}
+summary {color:#862d2d; cursor:pointer;}
+table {border-collapse:collapse; border: 2px solid #862d2d;}
+th {text-align:left;color: #862d2d;}
+td, th {padding:5px; border: 1px solid #862d2d;}

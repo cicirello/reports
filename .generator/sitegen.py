@@ -8,6 +8,7 @@
 
 import os
 from report import Report
+from page import PageBuilder
 
 def load_bib_file(bib_file="reports.bib"):
     """LaTeX bib file with BibTeX for the reports, including the abstracts.
@@ -64,4 +65,8 @@ def main():
     make_svg_files(reports)
 
 if __name__ == "__main__":
-    main()
+    #main()
+    reports = load_bib_file()
+    builder = PageBuilder()
+    print(builder.build_report_page(reports[0]))
+    print(builder._style_hash)

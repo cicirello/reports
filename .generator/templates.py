@@ -47,3 +47,20 @@ title_image_svg = """<svg xmlns="http://www.w3.org/2000/svg" width="1280" height
 """
 
 title_line = """<text x="1280" y="{0}" lengthAdjust="spacingAndGlyphs" textLength="{2}" text-anchor="middle" transform="scale(0.500)" fill="#862d2d">{1}</text>"""
+
+page_head_start = """<meta charset=utf-8>
+<link rel="canonical" href="{0}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-03XggbmiG4V1LM73nsSIIR66j0KipqrZc5QwAW2N/es='; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>PAGE_TITLE_GOES_HERE</title>
+<meta name="title" content="PAGE_TITLE_GOES_HERE">
+<meta name="description" content="SHORT_ABSTRACT_GOES_HERE">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+<meta property="og:url" content="{0}">
+<meta property="og:title" content="PAGE_TITLE_GOES_HERE">
+<meta property="og:image" content="SOCIAL_HEADER_IMAGE_GOES_HERE_PNG">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="672">
+<meta property="og:description" content="SHORT_ABSTRACT_GOES_HERE">
+"""

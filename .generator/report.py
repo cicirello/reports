@@ -67,6 +67,10 @@ class Report:
             svg = svg.replace("\n", "")
             f.write(svg)
 
+    def canonical_url(self):
+        """Computes the canonical url to the page about the report."""
+        return url_root + self.target_directory() + "/"
+
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""
         return self.target_directory() + "/" + self._fields["number"] + extension
