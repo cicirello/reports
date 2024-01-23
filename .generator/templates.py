@@ -64,3 +64,15 @@ page_head_start = """<meta charset=utf-8>
 <meta property="og:image:height" content="672">
 <meta property="og:description" content="{DESCRIPTION}">
 """
+
+citation_tags = """<meta name="citation_title" content="{TITLE}">
+{AUTHORS}
+<meta name="citation_publication_date" content="{YEAR}">
+<meta name="citation_date" content="{YEAR}">
+<meta name="citation_technical_report_institution" content="{INSTITUTION}">
+<meta name="citation_technical_report_number" content="{REPORT_NUM}">
+<meta name="citation_pdf_url" content="{PDF_URL}">
+<meta name="citation_abstract_html_url" content="{CANONICAL}">
+"""
+
+citation_author = """<meta name="citation_author" content="{AUTHOR}">"""

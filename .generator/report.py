@@ -55,7 +55,7 @@ class Report:
                     self._fields["month"],
                     self._fields["number"],
                     self._fields["institution"],
-                    url_root + self._full_file(".pdf"),
+                    self.pdf_url(),
                     self._fields["abstract"]
                 )
             )
@@ -67,6 +67,10 @@ class Report:
             svg = svg.replace("\n", "")
             f.write(svg)
 
+    def pdf_url(self):
+        """Gets the full url of the pdf file."""
+        return url_root + self._full_file(".pdf")
+
     def canonical_url(self):
         """Computes the canonical url to the page about the report."""
         return url_root + self.target_directory() + "/"
@@ -75,9 +79,21 @@ class Report:
         """Computes the url to the social preview image."""
         return url_root + self._full_file(".png")
 
+    def author_list(self):
+        """Generates list of authors."""
+        return self._fields["author"].split(" and ")
+
     def title(self):
         """Gets the report title."""
         return self._fields["title"]
+
+    def year(self):
+        """Gets the year the report."""
+        return self._fields["year"]
+
+    def institution(self):
+        """Gets the institution the report."""
+        return self._fields["institution"]
 
     def page_description(self):
         """Gets the description for the webpage for the report."""

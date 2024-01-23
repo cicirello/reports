@@ -44,9 +44,21 @@ class PageBuilder:
             "description" : description,
             "social-preview" : report.social_preview_image_url()
         }
-        return self._build_head(head_info)
+        return self._build_head(head_info, self._build_citation_tags(report))
 
-    def _build_head(self, head_info):
+    def _build_citation_tags(self, report):
+        authors = [ citation_author.format(AUTHOR=a) for a in report.author_list() ]
+        return citation_tags.format(
+            TITLE=report.title(),
+            YEAR=report.year(),
+            REPORT_NUM=report.report_number(),
+            INSTITUTION=report.institution(),
+            CANONICAL=report.canonical_url(),
+            PDF_URL=report.pdf_url(),
+            AUTHORS="\n".join(authors)
+        )
+
+    def _build_head(self, head_info, citation_tags=None):
         return "<!DOCTYPE html>\n<html lang=en>\n<head>\n" + (
                 page_head_start.format(
                     STYLEHASH=head_info["style-hash"],
@@ -54,7 +66,9 @@ class PageBuilder:
                     TITLE=head_info["title"],
                     DESCRIPTION=head_info["description"],
                     SOCIALPREVIEW=head_info["social-preview"]
-                ) + self._style_block()
+                ) + (
+                    citation_tags if citation_tags else ""
+                    ) + self._style_block()
             )+ "\n</head>"
 
     def _style_block(self):
