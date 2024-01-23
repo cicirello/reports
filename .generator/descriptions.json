@@ -1,0 +1,3 @@
+{
+  "VAC-TR-08-001": "This paper considers integrating multiple heuristics into Value Biased Stochastic Sampling (VBSS). We developed techniques that allow VBSS to self-select which heuristic to use from a set of heuristics. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions, which leads us to the selection of the Generalized Extreme Value Distribution to model randomized heuristic performance."
+}

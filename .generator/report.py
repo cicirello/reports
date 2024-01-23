@@ -18,19 +18,17 @@ class Report:
         "_key",
         "_fields",
         "_first_dir",
-        "_seq_num",
-        "_short_description"
+        "_seq_num"
         ]
 
     _line_y_values = [278, 449, 620, 791, 962]
 
-    def __init__(self, report, short_description=None):
+    def __init__(self, report):
         """Initializes a report object.
 
         Keyword arguments:
         report - a BibTeX record of a Tech Report
         """
-        self._short_description = short_description
         self._raw_bibtex = report
         if report[:12].lower() != "@techreport{":
             raise Exception('BibTeX Not a TechReport')
@@ -83,9 +81,11 @@ class Report:
 
     def page_description(self):
         """Gets the description for the webpage for the report."""
-        if self._short_description:
-            return self._short_description
         return self._fields["abstract"]
+
+    def report_number(self):
+        """Gets the report number."""
+        return self._fields["number"]
 
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""

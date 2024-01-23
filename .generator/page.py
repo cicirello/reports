@@ -9,13 +9,15 @@
 from templates import *
 from hashlib import sha256
 from base64 import b64encode
+import json
 
 class PageBuilder:
     """Forms pages for the site."""
 
     __slots__ = [
         '_style',
-        '_style_hash'
+        '_style_hash',
+        '_descriptions'
     ]
 
     def __init__(self):
@@ -24,6 +26,8 @@ class PageBuilder:
         self._style_hash = "sha256-" + b64encode(
                 sha256(("\n" + self._style).encode('utf-8')
             ).digest()).decode('utf-8')
+        with open(".generator/descriptions.json", "r") as f:
+            self._descriptions = json.load(f)
 
     def build_report_page(self, report):
         """Builds a page for a report.
@@ -31,11 +35,13 @@ class PageBuilder:
         Keyword arguments:
         report - the report the page is about
         """
+        description = self._descriptions[report.report_number()] if (
+            report.report_number() in self._descriptions) else report.page_description()
         head_info = {
             "style-hash" : self._style_hash,
             "canonical" : report.canonical_url(),
             "title" : report.title(),
-            "description" : report.page_description(),
+            "description" : description,
             "social-preview" : report.social_preview_image_url()
         }
         return self._build_head(head_info)
