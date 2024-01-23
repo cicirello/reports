@@ -57,16 +57,27 @@ def make_svg_files(reports):
     for r in reports:
         r.output_svg_file()
 
+def make_web_pages(builder, reports):
+    """Creates abstract pages for all of the reports.
+
+    Keyword arguments:
+    builder - the PageBuilder
+    reports - An iterable of Report objects
+    """
+    for r in reports:
+        with open(r.target_directory() + "/index.html", "w") as f:
+            f.write(builder.build_report_page(r))
+
 def main():
     reports = load_bib_file()
     reports.sort()
     make_dirs(reports)
     make_bib_files(reports)
     make_svg_files(reports)
+    builder = PageBuilder()
+    make_web_pages(builder, reports)
 
 if __name__ == "__main__":
-    #main()
-    reports = load_bib_file()
-    builder = PageBuilder()
-    print(builder.build_report_page(reports[0]))
+    main()
+    
     

@@ -107,3 +107,12 @@ report_page_content = """<article>
 </section>
 </article>
 """
+
+page_footer = """<footer>
+<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
+<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<div id="copyright"><small>Copyright &copy; 2008-{CURRENT_YEAR} <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
+</footer>
+</body>
+</html>
+"""

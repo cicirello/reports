@@ -10,6 +10,7 @@ from templates import *
 from hashlib import sha256
 from base64 import b64encode
 import json
+from datetime import datetime
 
 class PageBuilder:
     """Forms pages for the site."""
@@ -47,7 +48,11 @@ class PageBuilder:
         return self._build_head(
             head_info,
             self._build_citation_tags(report)
-        ) + self._build_content_header(report) + self._build_report_page_content(report)
+        ) + (
+            self._build_content_header(report)
+        ) + (
+            self._build_report_page_content(report)
+        ) + page_footer.format(CURRENT_YEAR=datetime.now().year)
 
     def _build_report_page_content(self, report):
         authors = [ self._formatted_author(a) for a in report.author_list() ]
