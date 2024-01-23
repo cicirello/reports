@@ -76,3 +76,16 @@ citation_tags = """<meta name="citation_title" content="{TITLE}">
 """
 
 citation_author = """<meta name="citation_author" content="{AUTHOR}">"""
+
+content_header = """<body>
+<header id="siteheader">
+<h2><img src="{HEADER_SVG}" alt="{PAGE_TITLE}" width="1280" height="672" class="respimg"></h2>
+<nav id="topNav">
+<input type="checkbox" id="toggle">
+<label for="toggle" id="menu-icon">&#9776;</label>
+<div><a href="/">Cicirello.org Technical Reports</a></div>
+<div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
+<div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
+</nav>
+</header>
+"""

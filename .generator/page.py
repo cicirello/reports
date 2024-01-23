@@ -44,7 +44,16 @@ class PageBuilder:
             "description" : description,
             "social-preview" : report.social_preview_image_url()
         }
-        return self._build_head(head_info, self._build_citation_tags(report))
+        return self._build_head(
+            head_info,
+            self._build_citation_tags(report)
+        ) + self._build_content_header(report)
+
+    def _build_content_header(self, report):
+        return content_header.format(
+            HEADER_SVG=report.svg_filename(),
+            PAGE_TITLE=report.title() + " - Technical Report " + report.report_number()
+        )
 
     def _build_citation_tags(self, report):
         authors = [ citation_author.format(AUTHOR=a) for a in report.author_list() ]
@@ -68,8 +77,8 @@ class PageBuilder:
                     SOCIALPREVIEW=head_info["social-preview"]
                 ) + (
                     citation_tags if citation_tags else ""
-                    ) + self._style_block()
-            )+ "\n</head>"
+                ) + self._style_block()
+            )+ "\n</head>\n"
 
     def _style_block(self):
         return "<style>\n" + self._style + "</style>"

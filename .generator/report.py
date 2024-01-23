@@ -103,9 +103,17 @@ class Report:
         """Gets the report number."""
         return self._fields["number"]
 
+    def svg_filename(self):
+        """Gets name of SVG file"""
+        return self._file_only(".svg")
+
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""
-        return self.target_directory() + "/" + self._fields["number"] + extension
+        return self.target_directory() + "/" + self._file_only(extension)
+
+    def _file_only(self, extension):
+        """Forms the name of a file."""
+        return self._fields["number"] + extension
 
     def _find_fields(self, partial):
         """Extracts the BibTeX fields from a partial BibTeX record
