@@ -60,6 +60,19 @@ class Report:
                 )
             )
 
+    def bibtex_web(self):
+        """Formats a BibTeX record for inclusion on webpage."""
+        return bibtex_web_template.format(
+            self._fields["number"],
+            self._fields["title"],
+            self._fields["author"],
+            self._fields["year"],
+            self._fields["month"],
+            self._fields["number"],
+            self._fields["institution"],
+            self.pdf_url()
+        )
+
     def output_svg_file(self):
         """Creates an svg file for the report."""
         with open(self._full_file(".svg"), "w") as f:
@@ -91,12 +104,16 @@ class Report:
         """Gets the year the report."""
         return self._fields["year"]
 
+    def month(self):
+        """Gets the month the report."""
+        return self._fields["month"]
+
     def institution(self):
         """Gets the institution the report."""
         return self._fields["institution"]
 
-    def page_description(self):
-        """Gets the description for the webpage for the report."""
+    def abstract(self):
+        """Gets the abstract of the report."""
         return self._fields["abstract"]
 
     def report_number(self):
@@ -106,6 +123,14 @@ class Report:
     def svg_filename(self):
         """Gets name of SVG file"""
         return self._file_only(".svg")
+
+    def pdf_filename(self):
+        """Gets name of pdf file"""
+        return self._file_only(".pdf")
+
+    def bib_filename(self):
+        """Gets name of bib file"""
+        return self._file_only(".bib")
 
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""

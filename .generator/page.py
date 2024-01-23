@@ -36,7 +36,7 @@ class PageBuilder:
         report - the report the page is about
         """
         description = self._descriptions[report.report_number()] if (
-            report.report_number() in self._descriptions) else report.page_description()
+            report.report_number() in self._descriptions) else report.abstract()
         head_info = {
             "style-hash" : self._style_hash,
             "canonical" : report.canonical_url(),
@@ -47,8 +47,38 @@ class PageBuilder:
         return self._build_head(
             head_info,
             self._build_citation_tags(report)
-        ) + self._build_content_header(report)
+        ) + self._build_content_header(report) + self._build_report_page_content(report)
 
+    def _build_report_page_content(self, report):
+        authors = [ self._formatted_author(a) for a in report.author_list() ]
+        author_field = authors[0] if len(authors)==1 else (
+            authors[0] + " and " + authors[1] if len(authors)==2 else (
+            ", ".join(authors[:-1]) + ", and " + authors[-1]
+            )
+        )
+        return report_page_content.format(
+            PDF_FILE=report.pdf_filename(),
+            BIBTEX=report.bibtex_web(),
+            TITLE=report.title(),
+            REPORT_NUM=report.report_number(),
+            INSTITUTION=report.institution(),
+            YEAR=report.year(),
+            MONTH=report.month(),
+            BIB_FILE=report.bib_filename(),
+            ABSTRACT=report.abstract(),
+            AUTHORS=author_field 
+        )
+
+    def _formatted_author(self, author):
+        me = {
+            "Vincent A. Cicirello",
+            "Vincent Cicirello",
+            "V. A. Cicirello",
+            "V. Cicirello"
+        }
+        me_with_link = """<a href="https://www.cicirello.org/">Vincent A. Cicirello</a>"""
+        return me_with_link if author in me else author
+        
     def _build_content_header(self, report):
         return content_header.format(
             HEADER_SVG=report.svg_filename(),

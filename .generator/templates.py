@@ -89,3 +89,21 @@ content_header = """<body>
 </nav>
 </header>
 """
+
+report_page_content = """<article>
+<header>
+<h2><a href="{PDF_FILE}">{TITLE}</a></h2>
+<h3>{AUTHORS}</h3>
+<h4>Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.</h4>
+</header>
+<details>
+<summary>Show BibTeX</summary>
+<pre><code>{BIBTEX}</code></pre>
+<a href="{BIB_FILE}">Download BibTeX file</a>
+</details>
+<section>
+<h4>Abstract</h4>
+<p>{ABSTRACT}</p>
+</section>
+</article>
+"""
