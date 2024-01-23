@@ -78,6 +78,10 @@ def main():
     make_web_pages(builder, reports)
 
 if __name__ == "__main__":
-    main()
+    #main()
+    reports = load_bib_file()
+    reports.sort()
+    builder = PageBuilder()
+    print(builder.build_home_page(reports))
     
     

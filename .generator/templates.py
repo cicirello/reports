@@ -7,6 +7,13 @@
 # copyright notice at the top.
 
 url_root = "https://reports.cicirello.org/"
+site_title = "Cicirello.org Technical Reports"
+site_description = """This site is a collection of Technical Reports from
+the research of Vincent A. Cicirello. It includes preprints of publications,
+some of which may also appear on arXiv; reports on research results not
+otherwise used in published works but which may be of use to other researchers;
+among other technical research content.
+"""
 
 bibtex_web_template = """@techreport{{{0},
   title = {{{1}}},
@@ -83,11 +90,27 @@ content_header = """<body>
 <nav id="topNav">
 <input type="checkbox" id="toggle">
 <label for="toggle" id="menu-icon">&#9776;</label>
-<div><a href="/">Cicirello.org Technical Reports</a></div>
+<div><a href="/"{ACTIVE}>Cicirello.org Technical Reports</a></div>
 <div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
 <div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
 </nav>
 </header>
+"""
+
+home_page_content = """<article class="publist">
+<h2 id="top">Technical Reports</h2>
+<p>This site is a series of Technical Reports from the research of
+<a href="https://www.cicirello.org/">Vincent A. Cicirello</a>. Some of the
+Technical Reports are preprints of journal articles or conference papers,
+some of which may also appear on arXiv. Some such preprints may be on
+research that is still in progress that I intend to publish in journals
+or conferences in the future. Other Technical Reports provide research
+results not otherwise used in published works but which may be of use to
+other researchers. Additional Technical Reports on this site concern other
+technical research content. Also see the
+<a href="https://www.cicirello.org/publications/">complete list of
+publications</a> on
+<a href="https://www.cicirello.org/">Vincent A. Cicirello's website</a>.</p>
 """
 
 report_page_content = """<article>

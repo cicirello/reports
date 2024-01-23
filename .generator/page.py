@@ -30,6 +30,29 @@ class PageBuilder:
         with open(".generator/descriptions.json", "r") as f:
             self._descriptions = json.load(f)
 
+    def build_home_page(self, reports):
+        """Builds the home page for the Tech Reports website.
+
+        Keyword arguments:
+        reports - a list of all of the reports in sorted order, most recent first
+        """
+        head_info = {
+            "style-hash" : self._style_hash,
+            "canonical" : url_root,
+            "title" : site_title,
+            "description" : site_description.replace("\n", " ").strip(),
+            "social-preview" : url_root + "images/reports.png"
+        }
+        return self._build_head(
+            head_info
+        ) + content_header.format(
+            HEADER_SVG="images/reports.svg",
+            PAGE_TITLE=site_title,
+            ACTIVE=' class="active"'
+        ) + self._build_home_page_content(
+            reports
+        )
+
     def build_report_page(self, report):
         """Builds a page for a report.
 
@@ -48,10 +71,10 @@ class PageBuilder:
         return self._build_head(
             head_info,
             self._build_citation_tags(report)
-        ) + (
-            self._build_content_header(report)
-        ) + (
-            self._build_report_page_content(report)
+        ) + self._build_content_header(
+            report
+        ) + self._build_report_page_content(
+            report
         ) + page_footer.format(CURRENT_YEAR=datetime.now().year)
 
     def _build_report_page_content(self, report):
@@ -74,6 +97,22 @@ class PageBuilder:
             AUTHORS=author_field 
         )
 
+    def _build_home_page_content(self, reports):
+        return home_page_content + self._year_block(reports)
+
+    def _year_block(self, reports):
+        years = []
+        for r in reports:
+            if len(years)==0 or r.year() != years[-1]:
+                years.append(r.year())
+        start = '<details>\n<summary>Browse by year</summary>\n<ul id="pubyears">\n'
+        end = '</ul>\n</details>'
+        year_template = '<li><a href="#{0}">{0}</a>,</li>'
+        last_template = '<li><a href="#{0}">{0}</a></li>'
+        year_items = [ year_template.format(y) for y in years[:-1]]
+        year_items.append(last_template.format(years[-1]))
+        return start + "\n".join(year_items) + end
+
     def _formatted_author(self, author):
         me = {
             "Vincent A. Cicirello",
@@ -87,7 +126,8 @@ class PageBuilder:
     def _build_content_header(self, report):
         return content_header.format(
             HEADER_SVG=report.svg_filename(),
-            PAGE_TITLE=report.title() + " - Technical Report " + report.report_number()
+            PAGE_TITLE=report.title() + " - Technical Report " + report.report_number(),
+            ACTIVE=""
         )
 
     def _build_citation_tags(self, report):
