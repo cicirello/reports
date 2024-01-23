@@ -32,14 +32,22 @@ class PageBuilder:
         report - the report the page is about
         """
         head_info = {
-            "canonical" : report.canonical_url()
+            "style-hash" : self._style_hash,
+            "canonical" : report.canonical_url(),
+            "title" : report.title(),
+            "description" : report.page_description(),
+            "social-preview" : report.social_preview_image_url()
         }
         return self._build_head(head_info)
 
     def _build_head(self, head_info):
         return "<!DOCTYPE html>\n<html lang=en>\n<head>\n" + (
                 page_head_start.format(
-                    head_info["canonical"]
+                    STYLEHASH=head_info["style-hash"],
+                    CANONICAL=head_info["canonical"],
+                    TITLE=head_info["title"],
+                    DESCRIPTION=head_info["description"],
+                    SOCIALPREVIEW=head_info["social-preview"]
                 ) + self._style_block()
             )+ "\n</head>"
 

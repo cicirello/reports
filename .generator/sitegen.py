@@ -69,4 +69,3 @@ if __name__ == "__main__":
     reports = load_bib_file()
     builder = PageBuilder()
     print(builder.build_report_page(reports[0]))
-    print(builder._style_hash)

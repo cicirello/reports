@@ -18,17 +18,19 @@ class Report:
         "_key",
         "_fields",
         "_first_dir",
-        "_seq_num"
+        "_seq_num",
+        "_short_description"
         ]
 
     _line_y_values = [278, 449, 620, 791, 962]
 
-    def __init__(self, report):
+    def __init__(self, report, short_description=None):
         """Initializes a report object.
 
         Keyword arguments:
         report - a BibTeX record of a Tech Report
         """
+        self._short_description = short_description
         self._raw_bibtex = report
         if report[:12].lower() != "@techreport{":
             raise Exception('BibTeX Not a TechReport')
@@ -70,6 +72,20 @@ class Report:
     def canonical_url(self):
         """Computes the canonical url to the page about the report."""
         return url_root + self.target_directory() + "/"
+
+    def social_preview_image_url(self):
+        """Computes the url to the social preview image."""
+        return url_root + self._full_file(".png")
+
+    def title(self):
+        """Gets the report title."""
+        return self._fields["title"]
+
+    def page_description(self):
+        """Gets the description for the webpage for the report."""
+        if self._short_description:
+            return self._short_description
+        return self._fields["abstract"]
 
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""
