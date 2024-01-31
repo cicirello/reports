@@ -78,12 +78,6 @@ class PageBuilder:
         ) + page_footer.format(CURRENT_YEAR=datetime.now().year)
 
     def _build_report_page_content(self, report):
-        authors = [ self._formatted_author(a) for a in report.author_list() ]
-        author_field = authors[0] if len(authors)==1 else (
-            authors[0] + " and " + authors[1] if len(authors)==2 else (
-            ", ".join(authors[:-1]) + ", and " + authors[-1]
-            )
-        )
         return report_page_content.format(
             PDF_FILE=report.pdf_filename(),
             BIBTEX=report.bibtex_web(),
@@ -94,35 +88,39 @@ class PageBuilder:
             MONTH=report.month(),
             BIB_FILE=report.bib_filename(),
             ABSTRACT=report.abstract(),
-            AUTHORS=author_field 
+            AUTHORS=report.formatted_authors() 
         )
 
     def _build_home_page_content(self, reports):
-        return home_page_content + self._year_block(reports)
+        return home_page_content + self._year_block(reports) + link_legend + self._report_list(reports) + "\n</article>"
+
+    def _report_list(self, reports):
+        lines = []
+        previous_year = -1
+        year_start = '<h3 id="{0}">{0} (<a href="#top"><em>Top of the page</em></a>)</h3>\n<ul>'
+        for r in reports:
+            if r.year() != previous_year:
+                if previous_year != -1:
+                    lines.append("</ul>")
+                lines.append(year_start.format(r.year()))
+                previous_year = r.year()
+            lines.append(r.report_listing())
+        lines.append("</ul>")
+        return "\n".join(lines)
 
     def _year_block(self, reports):
         years = []
         for r in reports:
             if len(years)==0 or r.year() != years[-1]:
                 years.append(r.year())
-        start = '<details>\n<summary>Browse by year</summary>\n<ul id="pubyears">\n'
-        end = '</ul>\n</details>'
+        start = '<details>\n<summary>Browse reports by year</summary>\n<ul id="pubyears">\n'
+        end = '</ul>\n</details>\n'
         year_template = '<li><a href="#{0}">{0}</a>,</li>'
         last_template = '<li><a href="#{0}">{0}</a></li>'
         year_items = [ year_template.format(y) for y in years[:-1]]
         year_items.append(last_template.format(years[-1]))
         return start + "\n".join(year_items) + end
-
-    def _formatted_author(self, author):
-        me = {
-            "Vincent A. Cicirello",
-            "Vincent Cicirello",
-            "V. A. Cicirello",
-            "V. Cicirello"
-        }
-        me_with_link = """<a href="https://www.cicirello.org/">Vincent A. Cicirello</a>"""
-        return me_with_link if author in me else author
-        
+    
     def _build_content_header(self, report):
         return content_header.format(
             HEADER_SVG=report.svg_filename(),

@@ -96,6 +96,25 @@ class Report:
         """Generates list of authors."""
         return self._fields["author"].split(" and ")
 
+    def formatted_authors(self):
+        """Formats the author list."""
+        authors = [ self._formatted_author(a) for a in self.author_list() ]
+        return authors[0] if len(authors)==1 else (
+            authors[0] + " and " + authors[1] if len(authors)==2 else (
+            ", ".join(authors[:-1]) + ", and " + authors[-1]
+            )
+        )
+
+    def _formatted_author(self, author):
+        me = {
+            "Vincent A. Cicirello",
+            "Vincent Cicirello",
+            "V. A. Cicirello",
+            "V. Cicirello"
+        }
+        me_with_link = """<a href="https://www.cicirello.org/">Vincent A. Cicirello</a>"""
+        return me_with_link if author in me else author
+
     def title(self):
         """Gets the report title."""
         return self._fields["title"]
@@ -131,6 +150,21 @@ class Report:
     def bib_filename(self):
         """Gets name of bib file"""
         return self._file_only(".bib")
+
+    def report_listing(self):
+        """Generates the list element for the site homepage list
+        of reports for this report."""
+        return formatted_report_listing.format(
+            ABSTRACT_PAGE=self.target_directory() + "/",
+            TITLE=self._fields["title"],
+            AUTHORS=self.formatted_authors(),
+            REPORT_NUM=self._fields["number"],
+            INSTITUTION=self._fields["institution"],
+            YEAR=self._fields["year"],
+            MONTH=self._fields["month"],
+            PDF_FILE=self._full_file(".pdf"),
+            BIB_FILE=self._full_file(".bib")
+        )
 
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""

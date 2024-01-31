@@ -107,10 +107,26 @@ research that is still in progress that I intend to publish in journals
 or conferences in the future. Other Technical Reports provide research
 results not otherwise used in published works but which may be of use to
 other researchers. Additional Technical Reports on this site concern other
-technical research content. Also see the
+technical research content, or details of software tools I've developed.
+Also see the
 <a href="https://www.cicirello.org/publications/">complete list of
 publications</a> on
 <a href="https://www.cicirello.org/">Vincent A. Cicirello's website</a>.</p>
+"""
+
+link_legend = """<details>
+<summary>Link label legend</summary>
+<table>
+<tr><th>Link</th><th>Links To</th></tr>
+<tr><td>Title</td><td>Abstract/information page</td></tr>
+<tr><td>[PDF]</td><td>Full-text pdf file</td></tr>
+<tr><td>[BIB]</td><td>BibTeX file</td></tr>
+<tr><td>[DOI]</td><td>Persistent link to publisher's version</td></tr>
+<tr><td>[PUB]</td><td>Publisher's version</td></tr>
+<tr><td>[arXiv]</td><td>Preprint on arXiv.org</td></tr>
+<tr><td>[CODE]</td><td>Source code repository, such as to reproduce experimental results, etc.</td></tr>
+</table>
+</details>
 """
 
 report_page_content = """<article>
@@ -130,6 +146,11 @@ report_page_content = """<article>
 </section>
 </article>
 """
+
+formatted_report_listing = """<li><a href="{ABSTRACT_PAGE}">{TITLE}</a>.<br>
+{AUTHORS}.<br>
+Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.<br>
+<a href="{PDF_FILE}">[PDF]</a> <a href="{BIB_FILE}">[BIB]</a></li>"""
 
 page_footer = """<footer>
 <p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
