@@ -68,6 +68,16 @@ def make_web_pages(builder, reports):
         with open(r.target_directory() + "/index.html", "w") as f:
             f.write(builder.build_report_page(r))
 
+def make_home_page(builder, reports):
+    """Creates the site homepage.
+
+    Keyword arguments:
+    builder - the PageBuilder
+    reports - An iterable of Report objects
+    """
+    with open("index.html", "w") as f:
+        f.write(builder.build_home_page(reports))
+
 def main():
     reports = load_bib_file()
     reports.sort()
@@ -76,12 +86,10 @@ def main():
     make_svg_files(reports)
     builder = PageBuilder()
     make_web_pages(builder, reports)
+    make_home_page(builder, reports)
 
 if __name__ == "__main__":
-    #main()
-    reports = load_bib_file()
-    reports.sort()
-    builder = PageBuilder()
-    print(builder.build_home_page(reports))
+    main()
+    
     
     

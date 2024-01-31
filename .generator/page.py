@@ -51,7 +51,7 @@ class PageBuilder:
             ACTIVE=' class="active"'
         ) + self._build_home_page_content(
             reports
-        )
+        ) + page_footer.format(CURRENT_YEAR=datetime.now().year)
 
     def build_report_page(self, report):
         """Builds a page for a report.
@@ -92,7 +92,7 @@ class PageBuilder:
         )
 
     def _build_home_page_content(self, reports):
-        return home_page_content + self._year_block(reports) + link_legend + self._report_list(reports) + "\n</article>"
+        return home_page_content + self._year_block(reports) + link_legend + self._report_list(reports) + "\n</article>\n"
 
     def _report_list(self, reports):
         lines = []

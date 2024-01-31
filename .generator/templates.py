@@ -111,7 +111,9 @@ technical research content, or details of software tools I've developed.
 Also see the
 <a href="https://www.cicirello.org/publications/">complete list of
 publications</a> on
-<a href="https://www.cicirello.org/">Vincent A. Cicirello's website</a>.</p>
+<a href="https://www.cicirello.org/">Vincent A. Cicirello's website</a>.
+You can also download a <a href="reports.bib">BibTeX file for all Technical
+Reports</a>.</p>
 """
 
 link_legend = """<details>
