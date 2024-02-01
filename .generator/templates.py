@@ -136,7 +136,7 @@ report_page_content = """<article>
 <h2><a href="{PDF_FILE}">{TITLE}</a></h2>
 <h3>{AUTHORS}</h3>
 <h4>Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.</h4>
-</header>
+{NOTE}</header>
 <details>
 <summary>Show BibTeX</summary>
 <pre><code>{BIBTEX}</code></pre>

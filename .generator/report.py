@@ -168,6 +168,9 @@ class Report:
 
     def report_page(self):
         """Generates the content for the report's abstract/information page."""
+        note = "<h4>" + self._fields["note"] + "</h4>\n" if (
+            "note" in self._fields
+        ) else ""
         return report_page_content.format(
             PDF_FILE=self._file_only(".pdf"),
             BIBTEX=self.bibtex_web(),
@@ -178,7 +181,8 @@ class Report:
             MONTH=self._fields["month"],
             BIB_FILE=self._file_only(".bib"),
             ABSTRACT=self._fields["abstract"],
-            AUTHORS=self.formatted_authors() 
+            AUTHORS=self.formatted_authors(),
+            NOTE=note
         )
 
     def _full_file(self, extension):
