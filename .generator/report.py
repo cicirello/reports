@@ -96,9 +96,15 @@ class Report:
         """Generates list of authors."""
         return self._fields["author"].split(" and ")
 
-    def formatted_authors(self):
-        """Formats the author list."""
-        authors = [ self._formatted_author(a) for a in self.author_list() ]
+    def formatted_authors(self, link=True):
+        """Formats the author list.
+
+        Keyword arguments:
+        link - if True, link me to my website
+        """
+        authors = [
+            self._formatted_author(a) if link else a for a in self.author_list()
+        ]
         return authors[0] if len(authors)==1 else (
             authors[0] + " and " + authors[1] if len(authors)==2 else (
             ", ".join(authors[:-1]) + ", and " + authors[-1]
@@ -157,7 +163,7 @@ class Report:
         return formatted_report_listing.format(
             ABSTRACT_PAGE=self.target_directory() + "/",
             TITLE=self._fields["title"],
-            AUTHORS=self.formatted_authors(),
+            AUTHORS=self.formatted_authors(False),
             REPORT_NUM=self._fields["number"],
             INSTITUTION=self._fields["institution"],
             YEAR=self._fields["year"],
