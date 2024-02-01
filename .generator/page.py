@@ -73,23 +73,8 @@ class PageBuilder:
             self._build_citation_tags(report)
         ) + self._build_content_header(
             report
-        ) + self._build_report_page_content(
-            report
+        ) + report.report_page(
         ) + page_footer.format(CURRENT_YEAR=datetime.now().year)
-
-    def _build_report_page_content(self, report):
-        return report_page_content.format(
-            PDF_FILE=report.pdf_filename(),
-            BIBTEX=report.bibtex_web(),
-            TITLE=report.title(),
-            REPORT_NUM=report.report_number(),
-            INSTITUTION=report.institution(),
-            YEAR=report.year(),
-            MONTH=report.month(),
-            BIB_FILE=report.bib_filename(),
-            ABSTRACT=report.abstract(),
-            AUTHORS=report.formatted_authors() 
-        )
 
     def _build_home_page_content(self, reports):
         return home_page_content + self._year_block(reports) + link_legend + self._report_list(reports) + "\n</article>\n"

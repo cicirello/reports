@@ -166,6 +166,21 @@ class Report:
             BIB_FILE=self._full_file(".bib")
         )
 
+    def report_page(self):
+        """Generates the content for the report's abstract/information page."""
+        return report_page_content.format(
+            PDF_FILE=self._file_only(".pdf"),
+            BIBTEX=self.bibtex_web(),
+            TITLE=self._fields["title"],
+            REPORT_NUM=self._fields["number"],
+            INSTITUTION=self._fields["institution"],
+            YEAR=self._fields["year"],
+            MONTH=self._fields["month"],
+            BIB_FILE=self._file_only(".bib"),
+            ABSTRACT=self._fields["abstract"],
+            AUTHORS=self.formatted_authors() 
+        )
+
     def _full_file(self, extension):
         """Forms the name of a file, relative to the root."""
         return self.target_directory() + "/" + self._file_only(extension)
