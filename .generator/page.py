@@ -70,7 +70,10 @@ class PageBuilder:
         }
         return self._build_head(
             head_info,
-            self._build_citation_tags(report)
+            self._build_citation_tags(report),
+            " frame-src 'self'; object-src 'self';"
+            #" frame-src " + report.pdf_filename() + "; object-src " + report.pdf_filename() + ";"
+            #" object-src '" + report.pdf_url() + "';"
         ) + self._build_content_header(
             report
         ) + report.report_page(
@@ -125,14 +128,15 @@ class PageBuilder:
             AUTHORS="\n".join(authors)
         )
 
-    def _build_head(self, head_info, citation_tags=None):
+    def _build_head(self, head_info, citation_tags=None, object_src_policy=""):
         return "<!DOCTYPE html>\n<html lang=en>\n<head>\n" + (
                 page_head_start.format(
                     STYLEHASH=head_info["style-hash"],
                     CANONICAL=head_info["canonical"],
                     TITLE=head_info["title"],
                     DESCRIPTION=head_info["description"],
-                    SOCIALPREVIEW=head_info["social-preview"]
+                    SOCIALPREVIEW=head_info["social-preview"],
+                    OBJECTSRC=object_src_policy
                 ) + (
                     citation_tags if citation_tags else ""
                 ) + self._style_block()

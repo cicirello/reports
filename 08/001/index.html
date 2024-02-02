@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <link rel="canonical" href="https://reports.cicirello.org/08/001/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-03XggbmiG4V1LM73nsSIIR66j0KipqrZc5QwAW2N/es='; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src 'self'; object-src 'self'; img-src 'self'; style-src 'sha256-BwQMMpALVnQOuiVssb4YwOWLPcr4k6sii1tdb8yB30g='; base-uri 'none'; form-action 'none';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Statistical Models of Multistart Randomized Heuristic Search Performance</title>
 <meta name="title" content="Statistical Models of Multistart Randomized Heuristic Search Performance">
@@ -61,6 +61,7 @@ summary {color:#862d2d; cursor:pointer;}
 table {border-collapse:collapse; border: 2px solid #862d2d;}
 th {text-align:left;color: #862d2d;}
 td, th {padding:5px; border: 1px solid #862d2d;}
+.pdfembed {width:96%; height:123vw; padding:16px 2%;}
 </style>
 </head>
 <body>
@@ -98,6 +99,9 @@ td, th {padding:5px; border: 1px solid #862d2d;}
 <section>
 <h4>Abstract</h4>
 <p>The complexity of many combinatorial optimization problems often preclude the application of exact problem solving techniques as the problem is scaled to real-world size. For example, for a problem that is NP-Hard in the strong sense, any algorithm that guarantees that its solutions are optimal is going to be limited in the size of the instance that it can solve given computational limitations. Rather than requiring optimal solutions, an alternative is to favor sufficiently good solutions that can be found efficiently. One approach to this uses a randomized heuristic algorithm. This paper specifically considers an algorithm known as Value Biased Stochastic Sampling (VBSS). VBSS uses a heuristic function to bias the random generation of a proposed solution to the problem. This process is repeated some number of times and retains only the best solution found over several trials. The key to the effectiveness of VBSS is the choice of the heuristic function. The job of the heuristic function is to provide problem dependent evaluation of the choices that can be made. This evaluation is used to bias the random decisions during the problem solving process. At the time of the design of such an algorithm, it may not be obvious which of several heuristics are best. During the past few years, we have been developing techniques for allowing VBSS to self-select which heuristic to use. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents some of our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions. Our analysis leads us to the selection of the Generalized Extreme Value Distribution for our models of randomized heuristic performance.</p>
+<object class="pdfembed" data="VAC-TR-08-001.pdf#view=FitH" type="application/pdf" width="100%" height="100%">
+<a href="VAC-TR-08-001.pdf">Download Fulltext PDF</a>
+</object>
 </section>
 </article>
 <footer>

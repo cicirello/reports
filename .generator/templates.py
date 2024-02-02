@@ -58,7 +58,7 @@ title_line = """<text x="1280" y="{0}" lengthAdjust="spacingAndGlyphs" textLengt
 page_head_start = """<meta charset=utf-8>
 <link rel="canonical" href="{CANONICAL}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src '{STYLEHASH}'; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';{OBJECTSRC} img-src 'self'; style-src '{STYLEHASH}'; base-uri 'none'; form-action 'none';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{TITLE}</title>
 <meta name="title" content="{TITLE}">
@@ -145,6 +145,9 @@ report_page_content = """<article>
 <section>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
+<object class="pdfembed" data="{PDF_FILE}#view=FitH" type="application/pdf" width="100%" height="100%">
+<a href="{PDF_FILE}">Download Fulltext PDF</a>
+</object>
 </section>
 </article>
 """
