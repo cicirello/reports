@@ -145,7 +145,7 @@ report_page_content = """<article>
 <section>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
-<object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="100%" height="100%">
+<object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
 <a href="{PDF_FILE}">Download Fulltext PDF</a>
 </object>
 </section>
