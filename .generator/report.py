@@ -23,11 +23,12 @@ class Report:
 
     _line_y_values = [278, 449, 620, 791, 962]
 
-    def __init__(self, report):
+    def __init__(self, report, additional_info):
         """Initializes a report object.
 
         Keyword arguments:
         report - a BibTeX record of a Tech Report
+        additional_info - dictionary of additional metadata for the reports
         """
         self._raw_bibtex = report
         if report[:12].lower() != "@techreport{":
@@ -38,6 +39,8 @@ class Report:
         number_components = self._fields["number"].split("-")
         self._seq_num = number_components[-1]
         self._first_dir = number_components[-2]
+        if self._fields["number"] in additional_info:
+            self._fields.update(additional_info[self._fields["number"]])
 
     def target_directory(self):
         """Returns the name of the target directory."""
@@ -140,6 +143,13 @@ class Report:
     def abstract(self):
         """Gets the abstract of the report."""
         return self._fields["abstract"]
+
+    def description(self):
+        """Gets a description of the report for the page metadata"""
+        if "description" in self._fields:
+            return self._fields["description"]
+        else:
+            return self._fields["abstract"]
 
     def report_number(self):
         """Gets the report number."""

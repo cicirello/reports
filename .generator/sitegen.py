@@ -6,14 +6,15 @@
 # not licensing it to others. Notice the "All rights reserved" in the
 # copyright notice at the top.
 
-import os
+import json, os
 from report import Report
 from page import PageBuilder
 
-def load_bib_file(bib_file="reports.bib"):
+def load_bib_file(additional_info, bib_file="reports.bib"):
     """LaTeX bib file with BibTeX for the reports, including the abstracts.
 
     Keyword arguments:
+    additional_info - additional metadata no in the bib file
     bib_file - the BibTeX file.
     """
     reports = []
@@ -22,10 +23,10 @@ def load_bib_file(bib_file="reports.bib"):
         for line in bib:
             if line.startswith("@techreport"):
                 if len(current) > 0:
-                    reports.append(Report("".join(current).strip()))
+                    reports.append(Report("".join(current).strip(), additional_info))
                     current = []
             current.append(line)
-        reports.append(Report("".join(current).strip()))
+        reports.append(Report("".join(current).strip(), additional_info))
     return reports
 
 def make_dirs(reports):
@@ -78,8 +79,15 @@ def make_home_page(builder, reports):
     with open("index.html", "w") as f:
         f.write(builder.build_home_page(reports))
 
+def load_additional():
+    """Loads additional-info.json which contains additional
+    report metadata not otherwise in the bib file."""
+    with open(".generator/additional-info.json", "r") as f:
+        return json.load(f)
+
 def main():
-    reports = load_bib_file()
+    additional_info = load_additional()
+    reports = load_bib_file(additional_info)
     reports.sort()
     make_dirs(reports)
     make_bib_files(reports)
