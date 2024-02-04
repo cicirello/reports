@@ -145,8 +145,9 @@ report_page_content = """<article>
 <section>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
+<a class="pdfmobile" href="{PDF_FILE}"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
 <object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
-<a href="{PDF_FILE}">Download Fulltext PDF</a>
+<a href="{PDF_FILE}"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
 </object>
 </section>
 </article>

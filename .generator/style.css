@@ -25,11 +25,13 @@ section {margin-top: 30px;}
 #pubyears li {float: left; margin: 0px 12px 12px 0px;}
 #copyright {text-align: center; color: #862d2d;}
 .pdfembed {width:96%; height:123vw; padding:16px 2%;}
+.pdfmobile {display:none;}
 @media screen and (max-width:600px){
 nav div a:not(.active) {display: none;}
 #toggle:checked ~ div a:not(.active) {display: block;}
 #menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
 .pdfembed {display:none;}
+.pdfmobile {display:inline;}
 }
 details, details[open] summary {margin-bottom:12pt;}
 summary {color:#862d2d; cursor:pointer;}
