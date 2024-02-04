@@ -12,6 +12,10 @@ from base64 import b64encode
 import json
 from datetime import datetime
 
+# Set this to True for a less strict content security policy for viewing
+# locally. Set to False for a stricter content security policy.
+VIEW_LOCAL = True
+
 class PageBuilder:
     """Forms pages for the site."""
 
@@ -59,6 +63,7 @@ class PageBuilder:
         Keyword arguments:
         report - the report the page is about
         """
+        global VIEW_LOCAL
         description = self._descriptions[report.report_number()] if (
             report.report_number() in self._descriptions) else report.abstract()
         head_info = {
@@ -71,9 +76,9 @@ class PageBuilder:
         return self._build_head(
             head_info,
             self._build_citation_tags(report),
-            " frame-src 'self'; object-src 'self';"
-            #" frame-src " + report.pdf_filename() + "; object-src " + report.pdf_filename() + ";"
-            #" object-src '" + report.pdf_url() + "';"
+            " frame-src {0}; object-src {0};".format(
+                "'self'" if VIEW_LOCAL else report.pdf_url()
+            )
         ) + self._build_content_header(
             report
         ) + report.report_page(
