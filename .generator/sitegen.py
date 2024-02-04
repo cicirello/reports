@@ -79,6 +79,15 @@ def make_home_page(builder, reports):
     with open("index.html", "w") as f:
         f.write(builder.build_home_page(reports))
 
+def make_404(builder):
+    """Creates the 404 page.
+
+    Keyword arguments:
+    builder - the PageBuilder
+    """
+    with open("404.html", "w") as f:
+        f.write(builder.build_404())
+
 def load_additional():
     """Loads additional-info.json which contains additional
     report metadata not otherwise in the bib file."""
@@ -95,6 +104,7 @@ def main():
     builder = PageBuilder()
     make_web_pages(builder, reports)
     make_home_page(builder, reports)
+    make_404(builder)
 
 if __name__ == "__main__":
     main()

@@ -30,6 +30,18 @@ class PageBuilder:
                 sha256(("\n" + self._style).encode('utf-8')
             ).digest()).decode('utf-8')
 
+    def build_404(self):
+        """Builds the 404 page."""
+        return template_404.format(
+            STYLEHASH=self._style_hash,
+            STYLE=self._style_block(),
+            CONTENT_HEADER=content_header.format(
+                HEADER_SVG="images/404.svg",
+                PAGE_TITLE="404 - File not found",
+                ACTIVE=""
+                )
+            ) + page_footer.format(CURRENT_YEAR=datetime.now().year)
+
     def build_home_page(self, reports):
         """Builds the home page for the Tech Reports website.
 
@@ -139,7 +151,7 @@ class PageBuilder:
                 ) + (
                     citation_tags if citation_tags else ""
                 ) + self._style_block()
-            )+ "\n</head>\n"
+            ) + "\n</head>\n"
 
     def _style_block(self):
         return "<style>\n" + self._style + "</style>"

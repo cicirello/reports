@@ -166,3 +166,24 @@ page_footer = """<footer>
 </body>
 </html>
 """
+
+template_404 = """<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src '{STYLEHASH}'; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Page not found - Cicirello.org Technical Reports</title>
+<meta name="title" content="Page not found - Cicirello.org Technical Reports">
+<meta name="description" content="Page not found - Cicirello.org Technical Reports">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+{STYLE}
+</head>
+{CONTENT_HEADER}<article>
+<h2>404</h2>
+<p><strong>File not found.</strong></p>
+<p>This site does not contain the requested page. Use the menu in the site header above to find what you are looking for.</p>
+</article>
+"""
