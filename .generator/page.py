@@ -13,7 +13,7 @@ from datetime import datetime
 
 # Set this to True for a less strict content security policy for viewing
 # locally. Set to False for a stricter content security policy.
-VIEW_LOCAL = True
+VIEW_LOCAL = False
 
 class PageBuilder:
     """Forms pages for the site."""
