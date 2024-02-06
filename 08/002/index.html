@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<link rel="canonical" href="https://reports.cicirello.org/08/002/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf; object-src https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf; img-src 'self'; style-src 'sha256-qbSKRE7+sxMOGJ/K2lzGl1WJfNYSmRWtZM2tg/mcrcc='; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism</title>
+<meta name="title" content="Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism">
+<meta name="description" content="Computational frameworks motivated by biological systems abound, which use mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. These nature-inspired systems are often robust, effective problem solvers. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. We focus on an existing multi-agent task allocation protocol inspired by a computational model of wasp behavior.">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+<meta property="og:url" content="https://reports.cicirello.org/08/002/">
+<meta property="og:title" content="Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism">
+<meta property="og:image" content="https://reports.cicirello.org/08/002/VAC-TR-08-002.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="672">
+<meta property="og:description" content="Computational frameworks motivated by biological systems abound, which use mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. These nature-inspired systems are often robust, effective problem solvers. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. We focus on an existing multi-agent task allocation protocol inspired by a computational model of wasp behavior.">
+<meta name="citation_title" content="Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism">
+<meta name="citation_author" content="Vincent A. Cicirello">
+<meta name="citation_publication_date" content="2008">
+<meta name="citation_date" content="2008">
+<meta name="citation_technical_report_institution" content="Cicirello.org">
+<meta name="citation_technical_report_number" content="VAC-TR-08-002">
+<meta name="citation_pdf_url" content="https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf">
+<meta name="citation_abstract_html_url" content="https://reports.cicirello.org/08/002/">
+<style>
+header, nav, footer, article, section {display: block;}
+footer {clear: both;}
+body {background-color: #f6f0bb; font-family: Georgia, Times, "Times New Roman", serif;}
+#siteheader, footer {background-color: #bfd9bf;}
+#siteheader, footer, article {border: 2px solid #4CAF50; border-radius: 25px; margin-bottom: 5px; padding: 8px;}
+h1, h2, h3, h4, h5, h6, strong {color: #862d2d;}
+#siteheader h2 {font-size: 2em; text-align: center;}
+img.respimg {max-width: 100%; height: auto;}
+a {color: #005500;}
+a:visited {color:#862d2d;}
+#toggle {position: absolute; left: -100vw; display: none;}
+nav {margin: 0px; padding: 0; overflow: hidden;}
+nav div, #menu-icon {float: left; margin-right: 8px;}
+nav div a, #menu-icon {display: block; background-color: #f6f0bb; border: 2px solid #4CAF50; text-decoration: none; text-align: center; color: #1c2833;}
+nav div a {border-bottom: none; border-radius: 12px 12px 0px 0px; padding: 6px 12px;}
+#menu-icon {cursor: pointer; display: none;}
+nav div a:visited {color: #1c2833;}
+nav div a:hover:not(.active), #menu-icon:hover:not(.active) {background-color: #305030; color: white;}
+nav div a.active {background-color: #4CAF50;}
+article li {margin-bottom: 12px; margin-top: 12px;}
+.publist li {margin-bottom: 16px;}
+.publist ul {margin-bottom: 32px;}
+section {margin-top: 30px;}
+#pubyears {list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
+#pubyears li {float: left; margin: 0px 12px 12px 0px;}
+#copyright {text-align: center; color: #862d2d;}
+.pdfembed {width:96%; height:123vw; padding:16px 2%;}
+.pdfmobile {display:none;}
+@media screen and (max-width:600px){
+nav div a:not(.active) {display: none;}
+#toggle:checked ~ div a:not(.active) {display: block;}
+#menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
+.pdfembed {display:none;}
+.pdfmobile {display:inline;}
+}
+details, details[open] summary {margin-bottom:12pt;}
+summary {color:#862d2d; cursor:pointer;}
+table {border-collapse:collapse; border: 2px solid #862d2d;}
+th {text-align:left;color: #862d2d;}
+td, th {padding:5px; border: 1px solid #862d2d;}
+</style>
+</head>
+<body>
+<header id="siteheader">
+<h2><img src="VAC-TR-08-002.svg" alt="Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism - Technical Report VAC-TR-08-002" width="1280" height="672" class="respimg"></h2>
+<nav id="topNav">
+<input type="checkbox" id="toggle">
+<label for="toggle" id="menu-icon">&#9776;</label>
+<div><a href="/">Cicirello.org Technical Reports</a></div>
+<div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
+<div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
+</nav>
+</header>
+<article>
+<header>
+<h2><a href="VAC-TR-08-002.pdf">Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism</a></h2>
+<h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
+<h4>Technical Report VAC-TR-08-002, Cicirello.org, October 2008.</h4>
+</header>
+<details>
+<summary>Show BibTeX</summary>
+<pre><code>@techreport{VAC-TR-08-002,
+  title = {Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism},
+  author = {Vincent A. Cicirello},
+  year = {2008},
+  month = {October},
+  number = {VAC-TR-08-002},
+  institution = {Cicirello.org},
+  url = {https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf}
+}
+</code></pre>
+<a href="VAC-TR-08-002.bib">Download BibTeX file</a>
+</details>
+<section>
+<h4>Abstract</h4>
+<p>Computational frameworks motivated by the efficiency of biological systems abound---using mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. Often, the motivation is as simple as that it works well for the biological system's problem and perhaps a similar mechanism can work just as well for a problem-solving framework inspired by the biology. These nature-inspired systems are often robust, effective problem solvers. In this paper, we consider the application of game theory for the analysis of biologically-inspired agent coordination mechanisms. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. To illustrate, we analyze an existing multi-agent task allocation protocol motivated by a computational model of wasp behavior.</p>
+<a class="pdfmobile" href="VAC-TR-08-002.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+<object class="pdfembed" data="VAC-TR-08-002.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
+<a href="VAC-TR-08-002.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+</object>
+</section>
+</article>
+<footer>
+<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
+<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<div id="copyright"><small>Copyright &copy; 2008-2024 <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
+</footer>
+</body>
+</html>

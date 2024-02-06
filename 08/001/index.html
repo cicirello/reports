@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<link rel="canonical" href="https://reports.cicirello.org/08/001/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/08/001/VAC-TR-08-001.pdf; object-src https://reports.cicirello.org/08/001/VAC-TR-08-001.pdf; img-src 'self'; style-src 'sha256-qbSKRE7+sxMOGJ/K2lzGl1WJfNYSmRWtZM2tg/mcrcc='; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Statistical Models of Multistart Randomized Heuristic Search Performance</title>
+<meta name="title" content="Statistical Models of Multistart Randomized Heuristic Search Performance">
+<meta name="description" content="This paper considers integrating multiple heuristics into Value Biased Stochastic Sampling (VBSS). We developed techniques that allow VBSS to self-select which heuristic to use from a set of heuristics. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions, which leads us to the selection of the Generalized Extreme Value Distribution to model randomized heuristic performance.">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+<meta property="og:url" content="https://reports.cicirello.org/08/001/">
+<meta property="og:title" content="Statistical Models of Multistart Randomized Heuristic Search Performance">
+<meta property="og:image" content="https://reports.cicirello.org/08/001/VAC-TR-08-001.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="672">
+<meta property="og:description" content="This paper considers integrating multiple heuristics into Value Biased Stochastic Sampling (VBSS). We developed techniques that allow VBSS to self-select which heuristic to use from a set of heuristics. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions, which leads us to the selection of the Generalized Extreme Value Distribution to model randomized heuristic performance.">
+<meta name="citation_title" content="Statistical Models of Multistart Randomized Heuristic Search Performance">
+<meta name="citation_author" content="Vincent A. Cicirello">
+<meta name="citation_publication_date" content="2008">
+<meta name="citation_date" content="2008">
+<meta name="citation_technical_report_institution" content="Cicirello.org">
+<meta name="citation_technical_report_number" content="VAC-TR-08-001">
+<meta name="citation_pdf_url" content="https://reports.cicirello.org/08/001/VAC-TR-08-001.pdf">
+<meta name="citation_abstract_html_url" content="https://reports.cicirello.org/08/001/">
+<style>
+header, nav, footer, article, section {display: block;}
+footer {clear: both;}
+body {background-color: #f6f0bb; font-family: Georgia, Times, "Times New Roman", serif;}
+#siteheader, footer {background-color: #bfd9bf;}
+#siteheader, footer, article {border: 2px solid #4CAF50; border-radius: 25px; margin-bottom: 5px; padding: 8px;}
+h1, h2, h3, h4, h5, h6, strong {color: #862d2d;}
+#siteheader h2 {font-size: 2em; text-align: center;}
+img.respimg {max-width: 100%; height: auto;}
+a {color: #005500;}
+a:visited {color:#862d2d;}
+#toggle {position: absolute; left: -100vw; display: none;}
+nav {margin: 0px; padding: 0; overflow: hidden;}
+nav div, #menu-icon {float: left; margin-right: 8px;}
+nav div a, #menu-icon {display: block; background-color: #f6f0bb; border: 2px solid #4CAF50; text-decoration: none; text-align: center; color: #1c2833;}
+nav div a {border-bottom: none; border-radius: 12px 12px 0px 0px; padding: 6px 12px;}
+#menu-icon {cursor: pointer; display: none;}
+nav div a:visited {color: #1c2833;}
+nav div a:hover:not(.active), #menu-icon:hover:not(.active) {background-color: #305030; color: white;}
+nav div a.active {background-color: #4CAF50;}
+article li {margin-bottom: 12px; margin-top: 12px;}
+.publist li {margin-bottom: 16px;}
+.publist ul {margin-bottom: 32px;}
+section {margin-top: 30px;}
+#pubyears {list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
+#pubyears li {float: left; margin: 0px 12px 12px 0px;}
+#copyright {text-align: center; color: #862d2d;}
+.pdfembed {width:96%; height:123vw; padding:16px 2%;}
+.pdfmobile {display:none;}
+@media screen and (max-width:600px){
+nav div a:not(.active) {display: none;}
+#toggle:checked ~ div a:not(.active) {display: block;}
+#menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
+.pdfembed {display:none;}
+.pdfmobile {display:inline;}
+}
+details, details[open] summary {margin-bottom:12pt;}
+summary {color:#862d2d; cursor:pointer;}
+table {border-collapse:collapse; border: 2px solid #862d2d;}
+th {text-align:left;color: #862d2d;}
+td, th {padding:5px; border: 1px solid #862d2d;}
+</style>
+</head>
+<body>
+<header id="siteheader">
+<h2><img src="VAC-TR-08-001.svg" alt="Statistical Models of Multistart Randomized Heuristic Search Performance - Technical Report VAC-TR-08-001" width="1280" height="672" class="respimg"></h2>
+<nav id="topNav">
+<input type="checkbox" id="toggle">
+<label for="toggle" id="menu-icon">&#9776;</label>
+<div><a href="/">Cicirello.org Technical Reports</a></div>
+<div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
+<div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
+</nav>
+</header>
+<article>
+<header>
+<h2><a href="VAC-TR-08-001.pdf">Statistical Models of Multistart Randomized Heuristic Search Performance</a></h2>
+<h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
+<h4>Technical Report VAC-TR-08-001, Cicirello.org, May 2008.</h4>
+<h4>Presented at the 40th Symposium on the Interface: Computing Science and Statistics (conference without proceedings), in Durham, NC, sponsored by the National Institute of Statistical Sciences</h4>
+</header>
+<details>
+<summary>Show BibTeX</summary>
+<pre><code>@techreport{VAC-TR-08-001,
+  title = {Statistical Models of Multistart Randomized Heuristic Search Performance},
+  author = {Vincent A. Cicirello},
+  year = {2008},
+  month = {May},
+  number = {VAC-TR-08-001},
+  institution = {Cicirello.org},
+  url = {https://reports.cicirello.org/08/001/VAC-TR-08-001.pdf}
+}
+</code></pre>
+<a href="VAC-TR-08-001.bib">Download BibTeX file</a>
+</details>
+<section>
+<h4>Abstract</h4>
+<p>The complexity of many combinatorial optimization problems often preclude the application of exact problem solving techniques as the problem is scaled to real-world size. For example, for a problem that is NP-Hard in the strong sense, any algorithm that guarantees that its solutions are optimal is going to be limited in the size of the instance that it can solve given computational limitations. Rather than requiring optimal solutions, an alternative is to favor sufficiently good solutions that can be found efficiently. One approach to this uses a randomized heuristic algorithm. This paper specifically considers an algorithm known as Value Biased Stochastic Sampling (VBSS). VBSS uses a heuristic function to bias the random generation of a proposed solution to the problem. This process is repeated some number of times and retains only the best solution found over several trials. The key to the effectiveness of VBSS is the choice of the heuristic function. The job of the heuristic function is to provide problem dependent evaluation of the choices that can be made. This evaluation is used to bias the random decisions during the problem solving process. At the time of the design of such an algorithm, it may not be obvious which of several heuristics are best. During the past few years, we have been developing techniques for allowing VBSS to self-select which heuristic to use. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents some of our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions. Our analysis leads us to the selection of the Generalized Extreme Value Distribution for our models of randomized heuristic performance.</p>
+<a class="pdfmobile" href="VAC-TR-08-001.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+<object class="pdfembed" data="VAC-TR-08-001.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
+<a href="VAC-TR-08-001.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+</object>
+</section>
+</article>
+<footer>
+<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
+<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<div id="copyright"><small>Copyright &copy; 2008-2024 <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<link rel="canonical" href="https://reports.cicirello.org/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-qbSKRE7+sxMOGJ/K2lzGl1WJfNYSmRWtZM2tg/mcrcc='; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Cicirello.org Technical Reports</title>
+<meta name="title" content="Cicirello.org Technical Reports">
+<meta name="description" content="This site is a collection of Technical Reports from the research of Vincent A. Cicirello. It includes preprints of publications, some of which may also appear on arXiv; reports on research results not otherwise used in published works but which may be of use to other researchers; among other technical research content.">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+<meta property="og:url" content="https://reports.cicirello.org/">
+<meta property="og:title" content="Cicirello.org Technical Reports">
+<meta property="og:image" content="https://reports.cicirello.org/images/reports.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="672">
+<meta property="og:description" content="This site is a collection of Technical Reports from the research of Vincent A. Cicirello. It includes preprints of publications, some of which may also appear on arXiv; reports on research results not otherwise used in published works but which may be of use to other researchers; among other technical research content.">
+<style>
+header, nav, footer, article, section {display: block;}
+footer {clear: both;}
+body {background-color: #f6f0bb; font-family: Georgia, Times, "Times New Roman", serif;}
+#siteheader, footer {background-color: #bfd9bf;}
+#siteheader, footer, article {border: 2px solid #4CAF50; border-radius: 25px; margin-bottom: 5px; padding: 8px;}
+h1, h2, h3, h4, h5, h6, strong {color: #862d2d;}
+#siteheader h2 {font-size: 2em; text-align: center;}
+img.respimg {max-width: 100%; height: auto;}
+a {color: #005500;}
+a:visited {color:#862d2d;}
+#toggle {position: absolute; left: -100vw; display: none;}
+nav {margin: 0px; padding: 0; overflow: hidden;}
+nav div, #menu-icon {float: left; margin-right: 8px;}
+nav div a, #menu-icon {display: block; background-color: #f6f0bb; border: 2px solid #4CAF50; text-decoration: none; text-align: center; color: #1c2833;}
+nav div a {border-bottom: none; border-radius: 12px 12px 0px 0px; padding: 6px 12px;}
+#menu-icon {cursor: pointer; display: none;}
+nav div a:visited {color: #1c2833;}
+nav div a:hover:not(.active), #menu-icon:hover:not(.active) {background-color: #305030; color: white;}
+nav div a.active {background-color: #4CAF50;}
+article li {margin-bottom: 12px; margin-top: 12px;}
+.publist li {margin-bottom: 16px;}
+.publist ul {margin-bottom: 32px;}
+section {margin-top: 30px;}
+#pubyears {list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
+#pubyears li {float: left; margin: 0px 12px 12px 0px;}
+#copyright {text-align: center; color: #862d2d;}
+.pdfembed {width:96%; height:123vw; padding:16px 2%;}
+.pdfmobile {display:none;}
+@media screen and (max-width:600px){
+nav div a:not(.active) {display: none;}
+#toggle:checked ~ div a:not(.active) {display: block;}
+#menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
+.pdfembed {display:none;}
+.pdfmobile {display:inline;}
+}
+details, details[open] summary {margin-bottom:12pt;}
+summary {color:#862d2d; cursor:pointer;}
+table {border-collapse:collapse; border: 2px solid #862d2d;}
+th {text-align:left;color: #862d2d;}
+td, th {padding:5px; border: 1px solid #862d2d;}
+</style>
+</head>
+<body>
+<header id="siteheader">
+<h2><img src="images/reports.svg" alt="Cicirello.org Technical Reports" width="1280" height="672" class="respimg"></h2>
+<nav id="topNav">
+<input type="checkbox" id="toggle">
+<label for="toggle" id="menu-icon">&#9776;</label>
+<div><a href="/" class="active">Cicirello.org Technical Reports</a></div>
+<div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
+<div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
+</nav>
+</header>
+<article class="publist">
+<h2 id="top">Technical Reports</h2>
+<p>This site is a series of Technical Reports from the research of
+<a href="https://www.cicirello.org/">Vincent A. Cicirello</a>. Some of the
+Technical Reports are preprints of journal articles or conference papers,
+some of which may also appear on arXiv. Some such preprints may be on
+research that is still in progress that I intend to publish in journals
+or conferences in the future. Other Technical Reports provide research
+results not otherwise used in published works but which may be of use to
+other researchers. Additional Technical Reports on this site concern other
+technical research content, or details of software tools I've developed.
+Also see the
+<a href="https://www.cicirello.org/publications/">complete list of
+publications</a> on
+<a href="https://www.cicirello.org/">Vincent A. Cicirello's website</a>.
+You can also download a <a href="reports.bib">BibTeX file for all Technical
+Reports</a>.</p>
+<details>
+<summary>Browse reports by year</summary>
+<ul id="pubyears">
+<li><a href="#2009">2009</a>,</li>
+<li><a href="#2008">2008</a></li></ul>
+</details>
+<details>
+<summary>Link label legend</summary>
+<table>
+<tr><th>Link</th><th>Links To</th></tr>
+<tr><td>Title</td><td>Abstract/information page</td></tr>
+<tr><td>[PDF]</td><td>Full-text pdf file</td></tr>
+<tr><td>[BIB]</td><td>BibTeX file</td></tr>
+<tr><td>[DOI]</td><td>Persistent link to publisher's version</td></tr>
+<tr><td>[PUB]</td><td>Publisher's version</td></tr>
+<tr><td>[arXiv]</td><td>Preprint on arXiv.org</td></tr>
+<tr><td>[CODE]</td><td>Source code repository, such as to reproduce experimental results, etc.</td></tr>
+</table>
+</details>
+<h3 id="2009">2009 (<a href="#top"><em>Top of the page</em></a>)</h3>
+<ul>
+<li><a href="09/003/">Multi-heuristic Stochastic Sampling Search: Extreme Value Theory and the Max K-Armed Bandit</a>.<br>
+Vincent A. Cicirello.<br>
+Technical Report VAC-TR-09-003, Cicirello.org, March 2009.<br>
+<a href="09/003/VAC-TR-09-003.pdf">[PDF]</a> <a href="09/003/VAC-TR-09-003.bib">[BIB]</a></li>
+</ul>
+<h3 id="2008">2008 (<a href="#top"><em>Top of the page</em></a>)</h3>
+<ul>
+<li><a href="08/002/">Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism</a>.<br>
+Vincent A. Cicirello.<br>
+Technical Report VAC-TR-08-002, Cicirello.org, October 2008.<br>
+<a href="08/002/VAC-TR-08-002.pdf">[PDF]</a> <a href="08/002/VAC-TR-08-002.bib">[BIB]</a></li>
+<li><a href="08/001/">Statistical Models of Multistart Randomized Heuristic Search Performance</a>.<br>
+Vincent A. Cicirello.<br>
+Technical Report VAC-TR-08-001, Cicirello.org, May 2008.<br>
+<a href="08/001/VAC-TR-08-001.pdf">[PDF]</a> <a href="08/001/VAC-TR-08-001.bib">[BIB]</a></li>
+</ul>
+</article>
+<footer>
+<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
+<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<div id="copyright"><small>Copyright &copy; 2008-2024 <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
+</footer>
+</body>
+</html>
