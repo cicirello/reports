@@ -2,5 +2,9 @@
   "VAC-TR-08-001": {
     "description": "This paper considers integrating multiple heuristics into Value Biased Stochastic Sampling (VBSS). We developed techniques that allow VBSS to self-select which heuristic to use from a set of heuristics. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions, which leads us to the selection of the Generalized Extreme Value Distribution to model randomized heuristic performance.",
     "note": "Presented at the 40th Symposium on the Interface: Computing Science and Statistics (conference without proceedings), in Durham, NC, sponsored by the National Institute of Statistical Sciences"
+  },
+  
+  "VAC-TR-08-002": {
+    "description": "Computational frameworks motivated by biological systems abound, which use mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. These nature-inspired systems are often robust, effective problem solvers. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. We focus on an existing multi-agent task allocation protocol inspired by a computational model of wasp behavior."
   }
 }
