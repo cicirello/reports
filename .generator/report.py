@@ -124,9 +124,13 @@ class Report:
         me_with_link = """<a href="https://www.cicirello.org/">Vincent A. Cicirello</a>"""
         return me_with_link if author in me else author
 
+    def websafe(self, original):
+        """Deals with LaTeX formatting stuff in abstract and title fields."""
+        return original.replace("$", "")
+
     def title(self):
         """Gets the report title."""
-        return self._fields["title"]
+        return self.websafe(self._fields["title"])
 
     def year(self):
         """Gets the year the report."""
@@ -142,7 +146,7 @@ class Report:
 
     def abstract(self):
         """Gets the abstract of the report."""
-        return self._fields["abstract"]
+        return self.websafe(self._fields["abstract"])
 
     def description(self):
         """Gets a description of the report for the page metadata"""
@@ -172,7 +176,7 @@ class Report:
         of reports for this report."""
         return formatted_report_listing.format(
             ABSTRACT_PAGE=self.target_directory() + "/",
-            TITLE=self._fields["title"],
+            TITLE=self.websafe(self._fields["title"]),
             AUTHORS=self.formatted_authors(False),
             REPORT_NUM=self._fields["number"],
             INSTITUTION=self._fields["institution"],
@@ -190,13 +194,13 @@ class Report:
         return report_page_content.format(
             PDF_FILE=self._file_only(".pdf"),
             BIBTEX=self.bibtex_web(),
-            TITLE=self._fields["title"],
+            TITLE=self.websafe(self._fields["title"]),
             REPORT_NUM=self._fields["number"],
             INSTITUTION=self._fields["institution"],
             YEAR=self._fields["year"],
             MONTH=self._fields["month"],
             BIB_FILE=self._file_only(".bib"),
-            ABSTRACT=self._fields["abstract"],
+            ABSTRACT=self.websafe(self._fields["abstract"]),
             AUTHORS=self.formatted_authors(),
             NOTE=note
         )
@@ -269,7 +273,7 @@ class Report:
         title - the title of the report
         """
         number = self._fields["number"]
-        title = self._fields["title"]
+        title = self.websafe(self._fields["title"])
         max_length = 2160
         report_str = "Technical Report " + number
         title_length = calculateTextLength110(title)
@@ -347,7 +351,7 @@ class Report:
         raise Exception("Failed to fit title on 5 lines:", title)
 
     def _partition_title_2(self):
-        parts = self._fields["title"].split()
+        parts = self.websafe(self._fields["title"]).split()
         min_delta = 99999999
         which = 0
         for i in range(1, len(parts)-1):
@@ -362,7 +366,7 @@ class Report:
         return t1, t2, max(calculateTextLength110(t1), calculateTextLength110(t2))
 
     def _partition_title_3(self):
-        parts = self._fields["title"].split()
+        parts = self.websafe(self._fields["title"]).split()
         min_delta = 99999999
         which_i = 0
         which_j = 0
@@ -388,7 +392,7 @@ class Report:
         return t1, t2, t3, the_longest
 
     def _partition_title_4(self):
-        parts = self._fields["title"].split()
+        parts = self.websafe(self._fields["title"]).split()
         min_delta = 99999999
         which_i = 0
         which_j = 0
@@ -420,7 +424,7 @@ class Report:
         return t1, t2, t3, t4, the_longest
 
     def _partition_title_5(self):
-        parts = self._fields["title"].split()
+        parts = self.websafe(self._fields["title"]).split()
         min_delta = 99999999
         which_i = 0
         which_j = 0
