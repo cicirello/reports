@@ -137,7 +137,8 @@ report_page_content = """<article>
 <h3>{AUTHORS}</h3>
 <h4>Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.</h4>
 {NOTE}</header>
-<details>
+<a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+{ARXIV}{CODE}<details>
 <summary>Show BibTeX</summary>
 <pre><code>{BIBTEX}</code></pre>
 <a href="{BIB_FILE}">Download BibTeX file</a>
@@ -145,12 +146,17 @@ report_page_content = """<article>
 <section>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
-<a class="pdfmobile" href="{PDF_FILE}"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
 <object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
-<a href="{PDF_FILE}"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+<a href="{PDF_FILE}"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 </object>
 </section>
 </article>
+"""
+
+arxiv_link = """<a href="{0}"><img class="button" src="../../images/arxiv-logomark.svg" width="43" height="64" alt="Preprint on arXiv"></a>
+"""
+
+code_link = """<a href="{0}"><img class="button" src="../../images/github.svg" width="64" height="64" alt="Sourcecode on GitHub"></a>
 """
 
 formatted_report_listing = """<li><a href="{ABSTRACT_PAGE}">{TITLE}</a>.<br>

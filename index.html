@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <link rel="canonical" href="https://reports.cicirello.org/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-qbSKRE7+sxMOGJ/K2lzGl1WJfNYSmRWtZM2tg/mcrcc='; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-ZAxdNVyoX1fOiYjnNbe3RXT1uGrpn39qo40HRjev+kg='; base-uri 'none'; form-action 'none';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Cicirello.org Technical Reports</title>
 <meta name="title" content="Cicirello.org Technical Reports">
@@ -44,15 +44,14 @@ section {margin-top: 30px;}
 #pubyears li {float: left; margin: 0px 12px 12px 0px;}
 #copyright {text-align: center; color: #862d2d;}
 .pdfembed {width:96%; height:123vw; padding:16px 2%;}
-.pdfmobile {display:none;}
+img.button {margin:0px 0px 0px 12px;}
 @media screen and (max-width:600px){
 nav div a:not(.active) {display: none;}
 #toggle:checked ~ div a:not(.active) {display: block;}
 #menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
 .pdfembed {display:none;}
-.pdfmobile {display:inline;}
 }
-details, details[open] summary {margin-bottom:12pt;}
+details, details[open] summary {margin-bottom:12pt; margin-top:12pt;}
 summary {color:#862d2d; cursor:pointer;}
 table {border-collapse:collapse; border: 2px solid #862d2d;}
 th {text-align:left;color: #862d2d;}
@@ -90,6 +89,7 @@ Reports</a>.</p>
 <details>
 <summary>Browse reports by year</summary>
 <ul id="pubyears">
+<li><a href="#2017">2017</a>,</li>
 <li><a href="#2009">2009</a>,</li>
 <li><a href="#2008">2008</a></li></ul>
 </details>
@@ -106,6 +106,13 @@ Reports</a>.</p>
 <tr><td>[CODE]</td><td>Source code repository, such as to reproduce experimental results, etc.</td></tr>
 </table>
 </details>
+<h3 id="2017">2017 (<a href="#top"><em>Top of the page</em></a>)</h3>
+<ul>
+<li><a href="17/004/">Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster</a>.<br>
+Vincent A. Cicirello.<br>
+Technical Report VAC-TR-17-004, Cicirello.org, August 2017.<br>
+<a href="17/004/VAC-TR-17-004.pdf">[PDF]</a> <a href="17/004/VAC-TR-17-004.bib">[BIB]</a> <a href="https://arxiv.org/abs/1708.05264">[arXiv]</a> <a href="https://github.com/cicirello/ClusterPerformanceTests">[CODE]</a></li>
+</ul>
 <h3 id="2009">2009 (<a href="#top"><em>Top of the page</em></a>)</h3>
 <ul>
 <li><a href="09/003/">Multi-heuristic Stochastic Sampling Search: Extreme Value Theory and the Max K-Armed Bandit</a>.<br>

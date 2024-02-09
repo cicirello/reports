@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <link rel="canonical" href="https://reports.cicirello.org/08/002/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf; object-src https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf; img-src 'self'; style-src 'sha256-qbSKRE7+sxMOGJ/K2lzGl1WJfNYSmRWtZM2tg/mcrcc='; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf; object-src https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf; img-src 'self'; style-src 'sha256-ZAxdNVyoX1fOiYjnNbe3RXT1uGrpn39qo40HRjev+kg='; base-uri 'none'; form-action 'none';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism</title>
 <meta name="title" content="Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism">
@@ -52,15 +52,14 @@ section {margin-top: 30px;}
 #pubyears li {float: left; margin: 0px 12px 12px 0px;}
 #copyright {text-align: center; color: #862d2d;}
 .pdfembed {width:96%; height:123vw; padding:16px 2%;}
-.pdfmobile {display:none;}
+img.button {margin:0px 0px 0px 12px;}
 @media screen and (max-width:600px){
 nav div a:not(.active) {display: none;}
 #toggle:checked ~ div a:not(.active) {display: block;}
 #menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
 .pdfembed {display:none;}
-.pdfmobile {display:inline;}
 }
-details, details[open] summary {margin-bottom:12pt;}
+details, details[open] summary {margin-bottom:12pt; margin-top:12pt;}
 summary {color:#862d2d; cursor:pointer;}
 table {border-collapse:collapse; border: 2px solid #862d2d;}
 th {text-align:left;color: #862d2d;}
@@ -84,6 +83,7 @@ td, th {padding:5px; border: 1px solid #862d2d;}
 <h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
 <h4>Technical Report VAC-TR-08-002, Cicirello.org, October 2008.</h4>
 </header>
+<a href="VAC-TR-08-002.pdf"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 <details>
 <summary>Show BibTeX</summary>
 <pre><code>@techreport{VAC-TR-08-002,
@@ -101,9 +101,8 @@ td, th {padding:5px; border: 1px solid #862d2d;}
 <section>
 <h4>Abstract</h4>
 <p>Computational frameworks motivated by the efficiency of biological systems abound---using mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. Often, the motivation is as simple as that it works well for the biological system's problem and perhaps a similar mechanism can work just as well for a problem-solving framework inspired by the biology. These nature-inspired systems are often robust, effective problem solvers. In this paper, we consider the application of game theory for the analysis of biologically-inspired agent coordination mechanisms. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. To illustrate, we analyze an existing multi-agent task allocation protocol motivated by a computational model of wasp behavior.</p>
-<a class="pdfmobile" href="VAC-TR-08-002.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
 <object class="pdfembed" data="VAC-TR-08-002.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
-<a href="VAC-TR-08-002.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+<a href="VAC-TR-08-002.pdf"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 </object>
 </section>
 </article>

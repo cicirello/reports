@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <link rel="canonical" href="https://reports.cicirello.org/09/003/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/09/003/VAC-TR-09-003.pdf; object-src https://reports.cicirello.org/09/003/VAC-TR-09-003.pdf; img-src 'self'; style-src 'sha256-qbSKRE7+sxMOGJ/K2lzGl1WJfNYSmRWtZM2tg/mcrcc='; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/09/003/VAC-TR-09-003.pdf; object-src https://reports.cicirello.org/09/003/VAC-TR-09-003.pdf; img-src 'self'; style-src 'sha256-ZAxdNVyoX1fOiYjnNbe3RXT1uGrpn39qo40HRjev+kg='; base-uri 'none'; form-action 'none';">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Multi-heuristic Stochastic Sampling Search: Extreme Value Theory and the Max K-Armed Bandit</title>
 <meta name="title" content="Multi-heuristic Stochastic Sampling Search: Extreme Value Theory and the Max K-Armed Bandit">
@@ -52,15 +52,14 @@ section {margin-top: 30px;}
 #pubyears li {float: left; margin: 0px 12px 12px 0px;}
 #copyright {text-align: center; color: #862d2d;}
 .pdfembed {width:96%; height:123vw; padding:16px 2%;}
-.pdfmobile {display:none;}
+img.button {margin:0px 0px 0px 12px;}
 @media screen and (max-width:600px){
 nav div a:not(.active) {display: none;}
 #toggle:checked ~ div a:not(.active) {display: block;}
 #menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
 .pdfembed {display:none;}
-.pdfmobile {display:inline;}
 }
-details, details[open] summary {margin-bottom:12pt;}
+details, details[open] summary {margin-bottom:12pt; margin-top:12pt;}
 summary {color:#862d2d; cursor:pointer;}
 table {border-collapse:collapse; border: 2px solid #862d2d;}
 th {text-align:left;color: #862d2d;}
@@ -84,6 +83,7 @@ td, th {padding:5px; border: 1px solid #862d2d;}
 <h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
 <h4>Technical Report VAC-TR-09-003, Cicirello.org, March 2009.</h4>
 </header>
+<a href="VAC-TR-09-003.pdf"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 <details>
 <summary>Show BibTeX</summary>
 <pre><code>@techreport{VAC-TR-09-003,
@@ -101,9 +101,8 @@ td, th {padding:5px; border: 1px solid #862d2d;}
 <section>
 <h4>Abstract</h4>
 <p>In this paper, we develop theoretical foundations for integrating multiple heuristics within a stochastic sampling search procedure. Such a capability is important in problem domains where several heuristics are available but none dominate across all problem instances. In order to utilize multiple heuristics, a search algorithm needs a mechanism for selecting from among the alternatives. We can view this selection problem as an online learning problem where the search framework builds models of the distributions of the quality of solutions given by the heuristics and uses those models as guidance for selecting heuristics throughout the search process. One key observation is that the distribution of solution values obtained across multiple runs of a stochastic sampling search algorithm using a strong domain heuristic is heavy-tailed. Modeling these solution quality distributions requires turning to extremal value theory. In particular, we motivate the use of a distribution known as the Generalized Extreme Value (GEV) distribution for our model of the performance of a search heuristic. We show specifically that it can be quite advantageous to abandon the more typical normality assumptions in favor of this GEV model. Secondly, we develop an exploration policy for allocating trials of a stochastic sampling algorithm amongst the set of component heuristics. This policy follows from an analysis of a new variation of the well known multiarmed bandit problem that we call the Max K-Armed Bandit. The analysis indicates that under our GEV model, a double exponentially increasing rate of trials of the stochastic sampling algorithm should be allocated to the observed best heuristic relative to the number of trials allocated to the alternative heuristics. We validate our search framework, which we call Quality Distribution Based sEArch CONtrol (QD-BEACON), empirically for two NP-Hard scheduling problems: (1) weighted tardiness scheduling and (2) resource constrained project scheduling with time windows (RCPSP/max). Our approach leads to an algorithm that is competitive with the current best heuristic algorithms for each of these problems, including finding new best solutions to some difficult instances of RCPSP/max.</p>
-<a class="pdfmobile" href="VAC-TR-09-003.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
 <object class="pdfembed" data="VAC-TR-09-003.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
-<a href="VAC-TR-09-003.pdf"><img src="/images/pdf-button.svg" width="64" height="64" alt="Download PDF"></a>
+<a href="VAC-TR-09-003.pdf"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 </object>
 </section>
 </article>

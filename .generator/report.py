@@ -176,10 +176,10 @@ class Report:
         of reports for this report."""
         other_links = ""
         if "arxiv" in self._fields:
-            other_links += ' <a href="{0}">[arXiv]</a></li>'.format(
+            other_links += ' <a href="{0}">[arXiv]</a>'.format(
                 self._fields["arxiv"])
         if "code" in self._fields:
-            other_links += ' <a href="{0}">[CODE]</a></li>'.format(
+            other_links += ' <a href="{0}">[CODE]</a>'.format(
                 self._fields["code"])
         return formatted_report_listing.format(
             ABSTRACT_PAGE=self.target_directory() + "/",
@@ -199,6 +199,12 @@ class Report:
         note = "<h4>" + self._fields["note"] + "</h4>\n" if (
             "note" in self._fields
         ) else ""
+        arxiv = arxiv_link.format(
+            self._fields["arxiv"]
+            ) if "arxiv" in self._fields else ""
+        code = code_link.format(
+            self._fields["code"]
+            ) if "code" in self._fields else ""
         return report_page_content.format(
             PDF_FILE=self._file_only(".pdf"),
             BIBTEX=self.bibtex_web(),
@@ -210,7 +216,9 @@ class Report:
             BIB_FILE=self._file_only(".bib"),
             ABSTRACT=self.websafe(self._fields["abstract"]),
             AUTHORS=self.formatted_authors(),
-            NOTE=note
+            NOTE=note,
+            ARXIV=arxiv,
+            CODE=code
         )
 
     def _full_file(self, extension):
@@ -481,15 +489,15 @@ class Report:
         return self._key == other._key and self._fields == other._fields
 
     def __lt__(self, other):
-        if self._first_dir.lstrip("0") > other._first_dir.lstrip("0"):
+        if int(self._first_dir.lstrip("0")) > int(other._first_dir.lstrip("0")):
             return True
-        if self._first_dir.lstrip("0") < other._first_dir.lstrip("0"):
+        if int(self._first_dir.lstrip("0")) < int(other._first_dir.lstrip("0")):
             return False
-        return self._seq_num.lstrip("0") > other._seq_num.lstrip("0")
+        return int(self._seq_num.lstrip("0")) > int(other._seq_num.lstrip("0"))
 
     def __gt__(self, other):
-        if self._first_dir.lstrip("0") < other._first_dir.lstrip("0"):
+        if int(self._first_dir.lstrip("0")) < int(other._first_dir.lstrip("0")):
             return True
-        if self._first_dir.lstrip("0") > other._first_dir.lstrip("0"):
+        if int(self._first_dir.lstrip("0")) > int(other._first_dir.lstrip("0")):
             return False
-        return self._seq_num.lstrip("0") < other._seq_num.lstrip("0")
+        return int(self._seq_num.lstrip("0")) < int(other._seq_num.lstrip("0"))

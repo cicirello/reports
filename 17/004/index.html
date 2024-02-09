@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<link rel="canonical" href="https://reports.cicirello.org/17/004/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/17/004/VAC-TR-17-004.pdf; object-src https://reports.cicirello.org/17/004/VAC-TR-17-004.pdf; img-src 'self'; style-src 'sha256-ZAxdNVyoX1fOiYjnNbe3RXT1uGrpn39qo40HRjev+kg='; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster</title>
+<meta name="title" content="Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster">
+<meta name="description" content="In this report, I describe the design and implementation of an inexpensive, eight node, 32 core, cluster of raspberry pi single board computers, as well as the performance of this cluster on two computational tasks, one that requires significant data transfer relative to computational time requirements, and one that does not. We have two use-cases for the cluster: (a) as an educational tool for classroom usage, such as covering parallel algorithms in an algorithms course; and (b) as a test system for use during the development of parallel metaheuristics, essentially serving as a personal desktop parallel computing cluster. Our preliminary results show that the slow 100 Mbps networking of the raspberry pi significantly limits such clusters to parallel computational tasks that are either long running relative to data communications requirements, or that which requires very little internode communications.  Additionally, although the raspberry pi 3 has a quad-core processor, parallel speedup degrades during attempts to utilize all four cores of all cluster nodes for a parallel computation, likely due to resource contention with operating system level processes. However, distributing a task across three cores of each cluster node does enable linear (or near linear) speedup.">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+<meta property="og:url" content="https://reports.cicirello.org/17/004/">
+<meta property="og:title" content="Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster">
+<meta property="og:image" content="https://reports.cicirello.org/17/004/VAC-TR-17-004.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="672">
+<meta property="og:description" content="In this report, I describe the design and implementation of an inexpensive, eight node, 32 core, cluster of raspberry pi single board computers, as well as the performance of this cluster on two computational tasks, one that requires significant data transfer relative to computational time requirements, and one that does not. We have two use-cases for the cluster: (a) as an educational tool for classroom usage, such as covering parallel algorithms in an algorithms course; and (b) as a test system for use during the development of parallel metaheuristics, essentially serving as a personal desktop parallel computing cluster. Our preliminary results show that the slow 100 Mbps networking of the raspberry pi significantly limits such clusters to parallel computational tasks that are either long running relative to data communications requirements, or that which requires very little internode communications.  Additionally, although the raspberry pi 3 has a quad-core processor, parallel speedup degrades during attempts to utilize all four cores of all cluster nodes for a parallel computation, likely due to resource contention with operating system level processes. However, distributing a task across three cores of each cluster node does enable linear (or near linear) speedup.">
+<meta name="citation_title" content="Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster">
+<meta name="citation_author" content="Vincent A. Cicirello">
+<meta name="citation_publication_date" content="2017">
+<meta name="citation_date" content="2017">
+<meta name="citation_technical_report_institution" content="Cicirello.org">
+<meta name="citation_technical_report_number" content="VAC-TR-17-004">
+<meta name="citation_pdf_url" content="https://reports.cicirello.org/17/004/VAC-TR-17-004.pdf">
+<meta name="citation_abstract_html_url" content="https://reports.cicirello.org/17/004/">
+<style>
+header, nav, footer, article, section {display: block;}
+footer {clear: both;}
+body {background-color: #f6f0bb; font-family: Georgia, Times, "Times New Roman", serif;}
+#siteheader, footer {background-color: #bfd9bf;}
+#siteheader, footer, article {border: 2px solid #4CAF50; border-radius: 25px; margin-bottom: 5px; padding: 8px;}
+h1, h2, h3, h4, h5, h6, strong {color: #862d2d;}
+#siteheader h2 {font-size: 2em; text-align: center;}
+img.respimg {max-width: 100%; height: auto;}
+a {color: #005500;}
+a:visited {color:#862d2d;}
+#toggle {position: absolute; left: -100vw; display: none;}
+nav {margin: 0px; padding: 0; overflow: hidden;}
+nav div, #menu-icon {float: left; margin-right: 8px;}
+nav div a, #menu-icon {display: block; background-color: #f6f0bb; border: 2px solid #4CAF50; text-decoration: none; text-align: center; color: #1c2833;}
+nav div a {border-bottom: none; border-radius: 12px 12px 0px 0px; padding: 6px 12px;}
+#menu-icon {cursor: pointer; display: none;}
+nav div a:visited {color: #1c2833;}
+nav div a:hover:not(.active), #menu-icon:hover:not(.active) {background-color: #305030; color: white;}
+nav div a.active {background-color: #4CAF50;}
+article li {margin-bottom: 12px; margin-top: 12px;}
+.publist li {margin-bottom: 16px;}
+.publist ul {margin-bottom: 32px;}
+section {margin-top: 30px;}
+#pubyears {list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
+#pubyears li {float: left; margin: 0px 12px 12px 0px;}
+#copyright {text-align: center; color: #862d2d;}
+.pdfembed {width:96%; height:123vw; padding:16px 2%;}
+img.button {margin:0px 0px 0px 12px;}
+@media screen and (max-width:600px){
+nav div a:not(.active) {display: none;}
+#toggle:checked ~ div a:not(.active) {display: block;}
+#menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
+.pdfembed {display:none;}
+}
+details, details[open] summary {margin-bottom:12pt; margin-top:12pt;}
+summary {color:#862d2d; cursor:pointer;}
+table {border-collapse:collapse; border: 2px solid #862d2d;}
+th {text-align:left;color: #862d2d;}
+td, th {padding:5px; border: 1px solid #862d2d;}
+</style>
+</head>
+<body>
+<header id="siteheader">
+<h2><img src="VAC-TR-17-004.svg" alt="Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster - Technical Report VAC-TR-17-004" width="1280" height="672" class="respimg"></h2>
+<nav id="topNav">
+<input type="checkbox" id="toggle">
+<label for="toggle" id="menu-icon">&#9776;</label>
+<div><a href="/">Cicirello.org Technical Reports</a></div>
+<div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
+<div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
+</nav>
+</header>
+<article>
+<header>
+<h2><a href="VAC-TR-17-004.pdf">Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster</a></h2>
+<h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
+<h4>Technical Report VAC-TR-17-004, Cicirello.org, August 2017.</h4>
+</header>
+<a href="VAC-TR-17-004.pdf"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+<a href="https://arxiv.org/abs/1708.05264"><img class="button" src="../../images/arxiv-logomark.svg" width="43" height="64" alt="Preprint on arXiv"></a>
+<a href="https://github.com/cicirello/ClusterPerformanceTests"><img class="button" src="../../images/github.svg" width="64" height="64" alt="Sourcecode on GitHub"></a>
+<details>
+<summary>Show BibTeX</summary>
+<pre><code>@techreport{VAC-TR-17-004,
+  title = {Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster},
+  author = {Vincent A. Cicirello},
+  year = {2017},
+  month = {August},
+  number = {VAC-TR-17-004},
+  institution = {Cicirello.org},
+  url = {https://reports.cicirello.org/17/004/VAC-TR-17-004.pdf}
+}
+</code></pre>
+<a href="VAC-TR-17-004.bib">Download BibTeX file</a>
+</details>
+<section>
+<h4>Abstract</h4>
+<p>In this report, I describe the design and implementation of an inexpensive, eight node, 32 core, cluster of raspberry pi single board computers, as well as the performance of this cluster on two computational tasks, one that requires significant data transfer relative to computational time requirements, and one that does not. We have two use-cases for the cluster: (a) as an educational tool for classroom usage, such as covering parallel algorithms in an algorithms course; and (b) as a test system for use during the development of parallel metaheuristics, essentially serving as a personal desktop parallel computing cluster. Our preliminary results show that the slow 100 Mbps networking of the raspberry pi significantly limits such clusters to parallel computational tasks that are either long running relative to data communications requirements, or that which requires very little internode communications.  Additionally, although the raspberry pi 3 has a quad-core processor, parallel speedup degrades during attempts to utilize all four cores of all cluster nodes for a parallel computation, likely due to resource contention with operating system level processes. However, distributing a task across three cores of each cluster node does enable linear (or near linear) speedup.</p>
+<object class="pdfembed" data="VAC-TR-17-004.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
+<a href="VAC-TR-17-004.pdf"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+</object>
+</section>
+</article>
+<footer>
+<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
+<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<div id="copyright"><small>Copyright &copy; 2008-2024 <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
+</footer>
+</body>
+</html>
