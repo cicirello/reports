@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://reports.cicirello.org/</loc>
-<lastmod>2024-02-06T17:01:23-05:00</lastmod>
+<lastmod>2024-02-09T13:46:33-05:00</lastmod>
 </url>
 <url>
 <loc>https://reports.cicirello.org/08/001/</loc>
-<lastmod>2024-02-06T17:01:23-05:00</lastmod>
+<lastmod>2024-02-09T13:46:33-05:00</lastmod>
 </url>
 <url>
 <loc>https://reports.cicirello.org/08/001/VAC-TR-08-001.pdf</loc>
@@ -14,7 +14,7 @@
 </url>
 <url>
 <loc>https://reports.cicirello.org/08/002/</loc>
-<lastmod>2024-02-06T17:01:23-05:00</lastmod>
+<lastmod>2024-02-09T13:46:33-05:00</lastmod>
 </url>
 <url>
 <loc>https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf</loc>
@@ -22,10 +22,18 @@
 </url>
 <url>
 <loc>https://reports.cicirello.org/09/003/</loc>
-<lastmod>2024-02-06T17:01:23-05:00</lastmod>
+<lastmod>2024-02-09T13:46:33-05:00</lastmod>
 </url>
 <url>
 <loc>https://reports.cicirello.org/09/003/VAC-TR-09-003.pdf</loc>
 <lastmod>2024-02-06T17:01:23-05:00</lastmod>
+</url>
+<url>
+<loc>https://reports.cicirello.org/17/004/</loc>
+<lastmod>2024-02-09T13:46:33-05:00</lastmod>
+</url>
+<url>
+<loc>https://reports.cicirello.org/17/004/VAC-TR-17-004.pdf</loc>
+<lastmod>2024-02-09T13:46:33-05:00</lastmod>
 </url>
 </urlset>
