@@ -156,7 +156,7 @@ report_page_content = """<article>
 formatted_report_listing = """<li><a href="{ABSTRACT_PAGE}">{TITLE}</a>.<br>
 {AUTHORS}.<br>
 Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.<br>
-<a href="{PDF_FILE}">[PDF]</a> <a href="{BIB_FILE}">[BIB]</a></li>"""
+<a href="{PDF_FILE}">[PDF]</a> <a href="{BIB_FILE}">[BIB]</a>{OTHERLINKS}</li>"""
 
 page_footer = """<footer>
 <p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>

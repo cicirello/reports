@@ -174,6 +174,13 @@ class Report:
     def report_listing(self):
         """Generates the list element for the site homepage list
         of reports for this report."""
+        other_links = ""
+        if "arxiv" in self._fields:
+            other_links += ' <a href="{0}">[arXiv]</a></li>'.format(
+                self._fields["arxiv"])
+        if "code" in self._fields:
+            other_links += ' <a href="{0}">[CODE]</a></li>'.format(
+                self._fields["code"])
         return formatted_report_listing.format(
             ABSTRACT_PAGE=self.target_directory() + "/",
             TITLE=self.websafe(self._fields["title"]),
@@ -183,7 +190,8 @@ class Report:
             YEAR=self._fields["year"],
             MONTH=self._fields["month"],
             PDF_FILE=self._full_file(".pdf"),
-            BIB_FILE=self._full_file(".bib")
+            BIB_FILE=self._full_file(".bib"),
+            OTHERLINKS=other_links
         )
 
     def report_page(self):
