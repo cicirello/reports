@@ -148,7 +148,7 @@ report_page_content = """<article>
 <p><a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 {ARXIV}{CODE}</p>
 <object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
-<a href="{PDF_FILE}"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+<span></span>
 </object>
 </section>
 </article>
