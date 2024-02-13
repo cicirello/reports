@@ -137,8 +137,7 @@ report_page_content = """<article>
 <h3>{AUTHORS}</h3>
 <h4>Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.</h4>
 {NOTE}</header>
-<a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
-{ARXIV}{CODE}<details>
+<details>
 <summary>Show BibTeX</summary>
 <pre><code>{BIBTEX}</code></pre>
 <a href="{BIB_FILE}">Download BibTeX file</a>
@@ -146,6 +145,8 @@ report_page_content = """<article>
 <section>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
+<p><a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+{ARXIV}{CODE}</p>
 <object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
 <a href="{PDF_FILE}"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
 </object>
