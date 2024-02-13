@@ -1,4 +1,9 @@
 {
+  "VAC-TR-20-005": {
+    "doi": "10.4108/eai.13-7-2018.163925",
+    "arxiv": "https://arxiv.org/abs/1905.02752"
+  },
+  
   "VAC-TR-17-004": {
     "arxiv": "https://arxiv.org/abs/1708.05264",
     "code": "https://github.com/cicirello/ClusterPerformanceTests"

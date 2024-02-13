@@ -146,7 +146,7 @@ report_page_content = """<article>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
 <p><a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
-{ARXIV}{CODE}</p>
+{DOI}{ARXIV}{CODE}</p>
 <object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
 <span></span>
 </object>
@@ -158,6 +158,9 @@ arxiv_link = """<a href="{0}"><img class="button" src="../../images/arxiv-logoma
 """
 
 code_link = """<a href="{0}"><img class="button" src="../../images/github.svg" width="64" height="64" alt="Sourcecode on GitHub"></a>
+"""
+
+doi_link = """<a href="https://doi.org/{0}"><img class="button" src="../../images/doi-logo.svg" width="64" height="64" alt="DOI"></a>
 """
 
 formatted_report_listing = """<li><a href="{ABSTRACT_PAGE}">{TITLE}</a>.<br>

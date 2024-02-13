@@ -175,6 +175,9 @@ class Report:
         """Generates the list element for the site homepage list
         of reports for this report."""
         other_links = ""
+        if "doi" in self._fields:
+            other_links += ' <a href="https://doi.org/{0}">[DOI]</a>'.format(
+                self._fields["doi"])
         if "arxiv" in self._fields:
             other_links += ' <a href="{0}">[arXiv]</a>'.format(
                 self._fields["arxiv"])
@@ -205,6 +208,9 @@ class Report:
         code = code_link.format(
             self._fields["code"]
             ) if "code" in self._fields else ""
+        doi = doi_link.format(
+            self._fields["doi"]
+            ) if "doi" in self._fields else ""
         return report_page_content.format(
             PDF_FILE=self._file_only(".pdf"),
             BIBTEX=self.bibtex_web(),
@@ -218,7 +224,8 @@ class Report:
             AUTHORS=self.formatted_authors(),
             NOTE=note,
             ARXIV=arxiv,
-            CODE=code
+            CODE=code,
+            DOI=doi
         )
 
     def _full_file(self, extension):
