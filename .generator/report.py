@@ -51,29 +51,29 @@ class Report:
         with open(self._full_file(".bib"), "w") as f:
             f.write(
                 bibtex_file_template.format(
-                    self._fields["number"],
-                    self._fields["title"],
-                    self._fields["author"],
-                    self._fields["year"],
-                    self._fields["month"],
-                    self._fields["number"],
-                    self._fields["institution"],
-                    self.pdf_url(),
-                    self._fields["abstract"]
+                    KEY=self._fields["number"],
+                    TITLE=self._fields["title"],
+                    AUTHOR=self._fields["author"],
+                    YEAR=self._fields["year"],
+                    MONTH=self._fields["month"],
+                    NUMBER=self._fields["number"],
+                    INSTITUTION=self._fields["institution"],
+                    URL=self.pdf_url(),
+                    ABSTRACT=self._fields["abstract"]
                 )
             )
 
     def bibtex_web(self):
         """Formats a BibTeX record for inclusion on webpage."""
         return bibtex_web_template.format(
-            self._fields["number"],
-            self._fields["title"],
-            self._fields["author"],
-            self._fields["year"],
-            self._fields["month"],
-            self._fields["number"],
-            self._fields["institution"],
-            self.pdf_url()
+            KEY=self._fields["number"],
+            TITLE=self._fields["title"],
+            AUTHOR=self._fields["author"],
+            YEAR=self._fields["year"],
+            MONTH=self._fields["month"],
+            NUMBER=self._fields["number"],
+            INSTITUTION=self._fields["institution"],
+            URL=self.pdf_url()
         )
 
     def output_svg_file(self):

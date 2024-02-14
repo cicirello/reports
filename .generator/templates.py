@@ -15,26 +15,26 @@ otherwise used in published works but which may be of use to other researchers;
 among other technical research content.
 """
 
-bibtex_web_template = """@techreport{{{0},
-  title = {{{1}}},
-  author = {{{2}}},
-  year = {{{3}}},
-  month = {{{4}}},
-  number = {{{5}}},
-  institution = {{{6}}},
-  url = {{{7}}}
+bibtex_web_template = """@techreport{{{KEY},
+  title = {{{TITLE}}},
+  author = {{{AUTHOR}}},
+  year = {{{YEAR}}},
+  month = {{{MONTH}}},
+  number = {{{NUMBER}}},
+  institution = {{{INSTITUTION}}},
+  url = {{{URL}}}
 }}
 """
 
-bibtex_file_template = """@techreport{{{0},
-  title = {{{1}}},
-  author = {{{2}}},
-  year = {{{3}}},
-  month = {{{4}}},
-  number = {{{5}}},
-  institution = {{{6}}},
-  url = {{{7}}},
-  abstract = {{{8}}}
+bibtex_file_template = """@techreport{{{KEY},
+  title = {{{TITLE}}},
+  author = {{{AUTHOR}}},
+  year = {{{YEAR}}},
+  month = {{{MONTH}}},
+  number = {{{NUMBER}}},
+  institution = {{{INSTITUTION}}},
+  url = {{{URL}}},
+  abstract = {{{ABSTRACT}}}
 }}
 """
 
