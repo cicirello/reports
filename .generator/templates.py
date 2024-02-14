@@ -15,7 +15,7 @@ otherwise used in published works but which may be of use to other researchers;
 among other technical research content.
 """
 
-bibtex_web_template = """@techreport{{{KEY},
+bibtex_web_template = """{OTHERCITE}@techreport{{{KEY},
   title = {{{TITLE}}},
   author = {{{AUTHOR}}},
   year = {{{YEAR}}},
@@ -26,7 +26,7 @@ bibtex_web_template = """@techreport{{{KEY},
 }}
 """
 
-bibtex_file_template = """@techreport{{{KEY},
+bibtex_file_template = """{OTHERCITE}@techreport{{{KEY},
   title = {{{TITLE}}},
   author = {{{AUTHOR}}},
   year = {{{YEAR}}},

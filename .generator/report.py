@@ -8,6 +8,7 @@
 
 from templates import *
 from text_length import calculateTextLength110, calculateTextLength110Weighted
+import math
 
 class Report:
     """Metadata for a single Technical Report as extracted from a BibTeX
@@ -18,7 +19,8 @@ class Report:
         "_key",
         "_fields",
         "_first_dir",
-        "_seq_num"
+        "_seq_num",
+        "_other_citation"
         ]
 
     _line_y_values = [278, 449, 620, 791, 962]
@@ -35,12 +37,33 @@ class Report:
             raise Exception('BibTeX Not a TechReport')
         key_end = report.find(",", 12)
         self._key = report[12:key_end].strip()
-        self._fields = self._find_fields(report[key_end+1:])
+        other_cite_start = min(
+            self._not_found_is_infinite(report.find("@article", key_end+1)),
+            self._not_found_is_infinite(report.find("@inproceedings", key_end+1)),
+            self._not_found_is_infinite(report.find("@ARTICLE", key_end+1)),
+            self._not_found_is_infinite(report.find("@INPROCEEDINGS", key_end+1))
+        )
+        self._fields = self._find_fields(report[key_end+1:other_cite_start] if (
+            math.isfinite(other_cite_start)
+            ) else report[key_end+1:])
+        self._other_citation = report[other_cite_start:].strip() if (
+            math.isfinite(other_cite_start)
+            ) else ""
+        if len(self._other_citation) > 0:
+            self._other_citation += "\n\n"
         number_components = self._fields["number"].split("-")
         self._seq_num = number_components[-1]
         self._first_dir = number_components[-2]
         if self._fields["number"] in additional_info:
             self._fields.update(additional_info[self._fields["number"]])
+
+    def _not_found_is_infinite(self, find_index):
+        """Maps not found index of -1 to infinity.
+
+        Keyword arguments:
+        find_index - an index returned by find
+        """
+        return find_index if find_index >= 0 else math.inf
 
     def target_directory(self):
         """Returns the name of the target directory."""
@@ -59,7 +82,8 @@ class Report:
                     NUMBER=self._fields["number"],
                     INSTITUTION=self._fields["institution"],
                     URL=self.pdf_url(),
-                    ABSTRACT=self._fields["abstract"]
+                    ABSTRACT=self._fields["abstract"],
+                    OTHERCITE=self._other_citation
                 )
             )
 
@@ -73,7 +97,8 @@ class Report:
             MONTH=self._fields["month"],
             NUMBER=self._fields["number"],
             INSTITUTION=self._fields["institution"],
-            URL=self.pdf_url()
+            URL=self.pdf_url(),
+            OTHERCITE=self._other_citation
         )
 
     def output_svg_file(self):
