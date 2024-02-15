@@ -151,7 +151,15 @@ class Report:
 
     def websafe(self, original):
         """Deals with LaTeX formatting stuff in abstract and title fields."""
-        return original.replace("$", "")
+        return original.replace(
+            "$", ""
+        ).replace(
+            "``", "&quot;"
+        ).replace(
+            "''", "&quot;"
+        ).replace(
+            '"', "&quot;"
+        )
 
     def title(self):
         """Gets the report title."""
