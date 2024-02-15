@@ -31,7 +31,7 @@ jobs:
     - name: Convert
       run: |
         npm install svg2png -g
-        rm ${{ github.event.inputs.ORIGINAL }}.png
+        rm -f ${{ github.event.inputs.ORIGINAL }}.png
         svg2png ${{ github.event.inputs.ORIGINAL }}.svg --output=${{ github.event.inputs.ORIGINAL }}.png --width=1280 --height=672
     
     - name: Commit and push 
