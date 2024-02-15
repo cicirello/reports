@@ -236,6 +236,11 @@ class Report:
         doi = doi_link.format(
             self._fields["doi"]
             ) if "doi" in self._fields else ""
+        formatted_cite = published_as.format(
+            FORMATTED_CITE = self._fields["citation"],
+            TYPE = self._fields["citation-type"] if (
+                "citation-type" in self._fields) else "Journal Ref"
+            ) if "citation" in self._fields else ""
         return report_page_content.format(
             PDF_FILE=self._file_only(".pdf"),
             BIBTEX=self.bibtex_web(),
@@ -250,7 +255,8 @@ class Report:
             NOTE=note,
             ARXIV=arxiv,
             CODE=code,
-            DOI=doi
+            DOI=doi,
+            FORMATTED_CITE=formatted_cite
         )
 
     def _full_file(self, extension):

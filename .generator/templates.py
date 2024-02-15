@@ -131,13 +131,19 @@ link_legend = """<details>
 </details>
 """
 
+published_as ="""<section>
+<h4>{TYPE}</h4>
+<p>{FORMATTED_CITE}</p>
+</section>
+"""
+
 report_page_content = """<article>
 <header>
 <h2><a href="{PDF_FILE}">{TITLE}</a></h2>
 <h3>{AUTHORS}</h3>
 <h4>Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.</h4>
 {NOTE}</header>
-<details>
+{FORMATTED_CITE}<details>
 <summary>Show BibTeX</summary>
 <pre><code>{BIBTEX}</code></pre>
 <a href="{BIB_FILE}">Download BibTeX file</a>
