@@ -1,4 +1,8 @@
 {
+  "VAC-TR-23-006": {
+    "code": "https://github.com/cicirello/btpe-iterations"
+  },
+  
   "VAC-TR-20-005": {
     "doi": "10.4108/eai.13-7-2018.163925",
     "arxiv": "https://arxiv.org/abs/1905.02752",
