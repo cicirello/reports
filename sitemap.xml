@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://reports.cicirello.org/</loc>
-<lastmod>2024-02-15T15:00:56-05:00</lastmod>
+<lastmod>2024-02-15T17:39:54-05:00</lastmod>
 </url>
 <url>
 <loc>https://reports.cicirello.org/08/001/</loc>
@@ -43,5 +43,13 @@
 <url>
 <loc>https://reports.cicirello.org/20/005/VAC-TR-20-005.pdf</loc>
 <lastmod>2024-02-15T15:00:56-05:00</lastmod>
+</url>
+<url>
+<loc>https://reports.cicirello.org/23/006/</loc>
+<lastmod>2024-02-15T17:39:54-05:00</lastmod>
+</url>
+<url>
+<loc>https://reports.cicirello.org/23/006/VAC-TR-23-006.pdf</loc>
+<lastmod>2024-02-15T17:39:54-05:00</lastmod>
 </url>
 </urlset>
