@@ -8,6 +8,7 @@
 
 from templates import *
 from text_length import calculateTextLength110, calculateTextLength110Weighted
+import math
 
 class Report:
     """Metadata for a single Technical Report as extracted from a BibTeX
@@ -18,7 +19,8 @@ class Report:
         "_key",
         "_fields",
         "_first_dir",
-        "_seq_num"
+        "_seq_num",
+        "_other_citation"
         ]
 
     _line_y_values = [278, 449, 620, 791, 962]
@@ -35,12 +37,33 @@ class Report:
             raise Exception('BibTeX Not a TechReport')
         key_end = report.find(",", 12)
         self._key = report[12:key_end].strip()
-        self._fields = self._find_fields(report[key_end+1:])
+        other_cite_start = min(
+            self._not_found_is_infinite(report.find("@article", key_end+1)),
+            self._not_found_is_infinite(report.find("@inproceedings", key_end+1)),
+            self._not_found_is_infinite(report.find("@ARTICLE", key_end+1)),
+            self._not_found_is_infinite(report.find("@INPROCEEDINGS", key_end+1))
+        )
+        self._fields = self._find_fields(report[key_end+1:other_cite_start] if (
+            math.isfinite(other_cite_start)
+            ) else report[key_end+1:])
+        self._other_citation = report[other_cite_start:].strip() if (
+            math.isfinite(other_cite_start)
+            ) else ""
+        if len(self._other_citation) > 0:
+            self._other_citation += "\n\n"
         number_components = self._fields["number"].split("-")
         self._seq_num = number_components[-1]
         self._first_dir = number_components[-2]
         if self._fields["number"] in additional_info:
             self._fields.update(additional_info[self._fields["number"]])
+
+    def _not_found_is_infinite(self, find_index):
+        """Maps not found index of -1 to infinity.
+
+        Keyword arguments:
+        find_index - an index returned by find
+        """
+        return find_index if find_index >= 0 else math.inf
 
     def target_directory(self):
         """Returns the name of the target directory."""
@@ -51,29 +74,31 @@ class Report:
         with open(self._full_file(".bib"), "w") as f:
             f.write(
                 bibtex_file_template.format(
-                    self._fields["number"],
-                    self._fields["title"],
-                    self._fields["author"],
-                    self._fields["year"],
-                    self._fields["month"],
-                    self._fields["number"],
-                    self._fields["institution"],
-                    self.pdf_url(),
-                    self._fields["abstract"]
+                    KEY=self._fields["number"],
+                    TITLE=self._fields["title"],
+                    AUTHOR=self._fields["author"],
+                    YEAR=self._fields["year"],
+                    MONTH=self._fields["month"],
+                    NUMBER=self._fields["number"],
+                    INSTITUTION=self._fields["institution"],
+                    URL=self.pdf_url(),
+                    ABSTRACT=self._fields["abstract"],
+                    OTHERCITE=self._other_citation
                 )
             )
 
     def bibtex_web(self):
         """Formats a BibTeX record for inclusion on webpage."""
         return bibtex_web_template.format(
-            self._fields["number"],
-            self._fields["title"],
-            self._fields["author"],
-            self._fields["year"],
-            self._fields["month"],
-            self._fields["number"],
-            self._fields["institution"],
-            self.pdf_url()
+            KEY=self._fields["number"],
+            TITLE=self._fields["title"],
+            AUTHOR=self._fields["author"],
+            YEAR=self._fields["year"],
+            MONTH=self._fields["month"],
+            NUMBER=self._fields["number"],
+            INSTITUTION=self._fields["institution"],
+            URL=self.pdf_url(),
+            OTHERCITE=self._other_citation
         )
 
     def output_svg_file(self):
@@ -175,6 +200,9 @@ class Report:
         """Generates the list element for the site homepage list
         of reports for this report."""
         other_links = ""
+        if "doi" in self._fields:
+            other_links += ' <a href="https://doi.org/{0}">[DOI]</a>'.format(
+                self._fields["doi"])
         if "arxiv" in self._fields:
             other_links += ' <a href="{0}">[arXiv]</a>'.format(
                 self._fields["arxiv"])
@@ -205,6 +233,14 @@ class Report:
         code = code_link.format(
             self._fields["code"]
             ) if "code" in self._fields else ""
+        doi = doi_link.format(
+            self._fields["doi"]
+            ) if "doi" in self._fields else ""
+        formatted_cite = published_as.format(
+            FORMATTED_CITE = self._fields["citation"],
+            TYPE = self._fields["citation-type"] if (
+                "citation-type" in self._fields) else "Journal Ref"
+            ) if "citation" in self._fields else ""
         return report_page_content.format(
             PDF_FILE=self._file_only(".pdf"),
             BIBTEX=self.bibtex_web(),
@@ -218,7 +254,9 @@ class Report:
             AUTHORS=self.formatted_authors(),
             NOTE=note,
             ARXIV=arxiv,
-            CODE=code
+            CODE=code,
+            DOI=doi,
+            FORMATTED_CITE=formatted_cite
         )
 
     def _full_file(self, extension):

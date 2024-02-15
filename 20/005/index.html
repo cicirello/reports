@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<link rel="canonical" href="https://reports.cicirello.org/20/005/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/20/005/VAC-TR-20-005.pdf; object-src https://reports.cicirello.org/20/005/VAC-TR-20-005.pdf; img-src 'self'; style-src 'sha256-wDhQNQeA3QCMAcoPs1LO+TUwUbNoRAyYm7H+MJEdV0U='; base-uri 'none'; form-action 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences</title>
+<meta name="title" content="Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences">
+<meta name="description" content="An edit distance is a measure of the minimum cost sequence of edit operations to transform one structure into another.  Edit distance can be used as a measure of similarity as part of a pattern recognition system, with lower values of edit distance implying more similar structures. Edit distance is most commonly encountered within the context of strings, where Wagner and Fischer's string edit distance is perhaps the most well-known.  However, edit distance is not limited to strings.  For example, there are several edit distance measures for permutations, including Wagner and Fischer's string edit distance since a permutation is a special case of a string.  However, another edit distance for permutations is Kendall tau distance, which is the number of pairwise element inversions.  On permutations, Kendall tau distance is equivalent to an edit distance with adjacent swap as the edit operation. A permutation is often used to represent a total ranking over a set of elements. There exist multiple extensions of Kendall tau distance from total rankings (permutations) to partial rankings (i.e., where multiple elements may have the same rank), but none of these are suitable for computing distance between sequences. We set out to explore extending Kendall tau distance in a different direction, namely from the special case of permutations to the more general case of strings or sequences of elements from some finite alphabet.  We name our distance metric Kendall tau sequence distance, and define it as the minimum number of adjacent swaps necessary to transform one sequence into the other.  We provide two O(n lg n) algorithms for computing it, and experimentally compare their relative performance.  We also provide reference implementations of both algorithms in an open source Java library.">
+<link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+<meta property="og:url" content="https://reports.cicirello.org/20/005/">
+<meta property="og:title" content="Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences">
+<meta property="og:image" content="https://reports.cicirello.org/20/005/VAC-TR-20-005.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="672">
+<meta property="og:description" content="An edit distance is a measure of the minimum cost sequence of edit operations to transform one structure into another.  Edit distance can be used as a measure of similarity as part of a pattern recognition system, with lower values of edit distance implying more similar structures. Edit distance is most commonly encountered within the context of strings, where Wagner and Fischer's string edit distance is perhaps the most well-known.  However, edit distance is not limited to strings.  For example, there are several edit distance measures for permutations, including Wagner and Fischer's string edit distance since a permutation is a special case of a string.  However, another edit distance for permutations is Kendall tau distance, which is the number of pairwise element inversions.  On permutations, Kendall tau distance is equivalent to an edit distance with adjacent swap as the edit operation. A permutation is often used to represent a total ranking over a set of elements. There exist multiple extensions of Kendall tau distance from total rankings (permutations) to partial rankings (i.e., where multiple elements may have the same rank), but none of these are suitable for computing distance between sequences. We set out to explore extending Kendall tau distance in a different direction, namely from the special case of permutations to the more general case of strings or sequences of elements from some finite alphabet.  We name our distance metric Kendall tau sequence distance, and define it as the minimum number of adjacent swaps necessary to transform one sequence into the other.  We provide two O(n lg n) algorithms for computing it, and experimentally compare their relative performance.  We also provide reference implementations of both algorithms in an open source Java library.">
+<meta name="citation_title" content="Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences">
+<meta name="citation_author" content="Vincent A. Cicirello">
+<meta name="citation_publication_date" content="2020">
+<meta name="citation_date" content="2020">
+<meta name="citation_technical_report_institution" content="Cicirello.org">
+<meta name="citation_technical_report_number" content="VAC-TR-20-005">
+<meta name="citation_pdf_url" content="https://reports.cicirello.org/20/005/VAC-TR-20-005.pdf">
+<meta name="citation_abstract_html_url" content="https://reports.cicirello.org/20/005/">
+<style>
+header, nav, footer, article, section {display: block;}
+footer {clear: both;}
+body {background-color: #f6f0bb; font-family: Georgia, Times, "Times New Roman", serif;}
+#siteheader, footer {background-color: #bfd9bf;}
+#siteheader, footer, article {border: 2px solid #4CAF50; border-radius: 25px; margin-bottom: 5px; padding: 8px;}
+h1, h2, h3, h4, h5, h6, strong {color: #862d2d;}
+#siteheader h2 {font-size: 2em; text-align: center;}
+img.respimg {max-width: 100%; height: auto;}
+a {color: #005500;}
+a:visited {color:#862d2d;}
+#toggle {position: absolute; left: -100vw; display: none;}
+nav {margin: 0px; padding: 0; overflow: hidden;}
+nav div, #menu-icon {float: left; margin-right: 8px;}
+nav div a, #menu-icon {display: block; background-color: #f6f0bb; border: 2px solid #4CAF50; text-decoration: none; text-align: center; color: #1c2833;}
+nav div a {border-bottom: none; border-radius: 12px 12px 0px 0px; padding: 6px 12px;}
+#menu-icon {cursor: pointer; display: none;}
+nav div a:visited {color: #1c2833;}
+nav div a:hover:not(.active), #menu-icon:hover:not(.active) {background-color: #305030; color: white;}
+nav div a.active {background-color: #4CAF50;}
+article li {margin-bottom: 12px; margin-top: 12px;}
+.publist li {margin-bottom: 16px;}
+.publist ul {margin-bottom: 32px;}
+section {margin-top: 30px;}
+#pubyears {list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
+#pubyears li {float: left; margin: 0px 12px 12px 0px;}
+#copyright {text-align: center; color: #862d2d;}
+.pdfembed {width:96%; height:123vw; padding:16px 2%;}
+img.button {margin:0px 0px 0px 12px;}
+@media screen and (max-width:600px){
+nav div a:not(.active) {display: none;}
+#toggle:checked ~ div a:not(.active) {display: block;}
+#menu-icon {display: block; padding: 3px 7px 3px 7px; border-radius: 4px;}
+.pdfembed {display:none;}
+}
+details, details[open] summary {margin-bottom:12pt; margin-top:12pt;}
+summary {color:#862d2d; cursor:pointer;}
+table {border-collapse:collapse; border: 2px solid #862d2d;}
+th {text-align:left;color: #862d2d;}
+td, th {padding:5px; border: 1px solid #862d2d;}
+pre {overflow-x:auto;}
+</style>
+</head>
+<body>
+<header id="siteheader">
+<h2><img src="VAC-TR-20-005.svg" alt="Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences - Technical Report VAC-TR-20-005" width="1280" height="672" class="respimg"></h2>
+<nav id="topNav">
+<input type="checkbox" id="toggle">
+<label for="toggle" id="menu-icon">&#9776;</label>
+<div><a href="/">Cicirello.org Technical Reports</a></div>
+<div><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></div>
+<div><a href="https://www.cicirello.org/publications/">All Publications</a></div>
+</nav>
+</header>
+<article>
+<header>
+<h2><a href="VAC-TR-20-005.pdf">Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences</a></h2>
+<h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
+<h4>Technical Report VAC-TR-20-005, Cicirello.org, April 2020.</h4>
+</header>
+<section>
+<h4>Journal Ref</h4>
+<p>Vincent A. Cicirello. 2020. Kendall tau sequence distance: Extending Kendall tau from ranks to sequences. <i>Industrial Networks and Intelligent Systems</i> 7(23), Article e1 (April 2020), 12 pages. <a href="https://doi.org/10.4108/eai.13-7-2018.163925">https://doi.org/10.4108/eai.13-7-2018.163925</a></p>
+</section>
+<details>
+<summary>Show BibTeX</summary>
+<pre><code>@article{cicirello2020inis,
+  title = {Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences},
+  author = {Vincent A. Cicirello},
+  year = {2020},
+  month = {April},
+  journal = {Industrial Networks and Intelligent Systems},
+  volume = {7},
+  number = {23},
+  pages = {e1},
+  articleno = {e1},
+  numpages = {12},
+  doi = {10.4108/eai.13-7-2018.163925},
+  url = {https://doi.org/10.4108/eai.13-7-2018.163925}
+}
+
+@techreport{VAC-TR-20-005,
+  title = {Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences},
+  author = {Vincent A. Cicirello},
+  year = {2020},
+  month = {April},
+  number = {VAC-TR-20-005},
+  institution = {Cicirello.org},
+  url = {https://reports.cicirello.org/20/005/VAC-TR-20-005.pdf}
+}
+</code></pre>
+<a href="VAC-TR-20-005.bib">Download BibTeX file</a>
+</details>
+<section>
+<h4>Abstract</h4>
+<p>An edit distance is a measure of the minimum cost sequence of edit operations to transform one structure into another.  Edit distance can be used as a measure of similarity as part of a pattern recognition system, with lower values of edit distance implying more similar structures. Edit distance is most commonly encountered within the context of strings, where Wagner and Fischer's string edit distance is perhaps the most well-known.  However, edit distance is not limited to strings.  For example, there are several edit distance measures for permutations, including Wagner and Fischer's string edit distance since a permutation is a special case of a string.  However, another edit distance for permutations is Kendall tau distance, which is the number of pairwise element inversions.  On permutations, Kendall tau distance is equivalent to an edit distance with adjacent swap as the edit operation. A permutation is often used to represent a total ranking over a set of elements. There exist multiple extensions of Kendall tau distance from total rankings (permutations) to partial rankings (i.e., where multiple elements may have the same rank), but none of these are suitable for computing distance between sequences. We set out to explore extending Kendall tau distance in a different direction, namely from the special case of permutations to the more general case of strings or sequences of elements from some finite alphabet.  We name our distance metric Kendall tau sequence distance, and define it as the minimum number of adjacent swaps necessary to transform one sequence into the other.  We provide two O(n lg n) algorithms for computing it, and experimentally compare their relative performance.  We also provide reference implementations of both algorithms in an open source Java library.</p>
+<p><a href="VAC-TR-20-005.pdf"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+<a href="https://doi.org/10.4108/eai.13-7-2018.163925"><img class="button" src="../../images/doi-logo.svg" width="64" height="64" alt="DOI"></a>
+<a href="https://arxiv.org/abs/1905.02752"><img class="button" src="../../images/arxiv-logomark.svg" width="43" height="64" alt="Preprint on arXiv"></a>
+</p>
+<object class="pdfembed" data="VAC-TR-20-005.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
+<span></span>
+</object>
+</section>
+</article>
+<footer>
+<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
+<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<div id="copyright"><small>Copyright &copy; 2008-2024 <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
+</footer>
+</body>
+</html>

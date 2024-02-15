@@ -15,26 +15,26 @@ otherwise used in published works but which may be of use to other researchers;
 among other technical research content.
 """
 
-bibtex_web_template = """@techreport{{{0},
-  title = {{{1}}},
-  author = {{{2}}},
-  year = {{{3}}},
-  month = {{{4}}},
-  number = {{{5}}},
-  institution = {{{6}}},
-  url = {{{7}}}
+bibtex_web_template = """{OTHERCITE}@techreport{{{KEY},
+  title = {{{TITLE}}},
+  author = {{{AUTHOR}}},
+  year = {{{YEAR}}},
+  month = {{{MONTH}}},
+  number = {{{NUMBER}}},
+  institution = {{{INSTITUTION}}},
+  url = {{{URL}}}
 }}
 """
 
-bibtex_file_template = """@techreport{{{0},
-  title = {{{1}}},
-  author = {{{2}}},
-  year = {{{3}}},
-  month = {{{4}}},
-  number = {{{5}}},
-  institution = {{{6}}},
-  url = {{{7}}},
-  abstract = {{{8}}}
+bibtex_file_template = """{OTHERCITE}@techreport{{{KEY},
+  title = {{{TITLE}}},
+  author = {{{AUTHOR}}},
+  year = {{{YEAR}}},
+  month = {{{MONTH}}},
+  number = {{{NUMBER}}},
+  institution = {{{INSTITUTION}}},
+  url = {{{URL}}},
+  abstract = {{{ABSTRACT}}}
 }}
 """
 
@@ -131,14 +131,19 @@ link_legend = """<details>
 </details>
 """
 
+published_as ="""<section>
+<h4>{TYPE}</h4>
+<p>{FORMATTED_CITE}</p>
+</section>
+"""
+
 report_page_content = """<article>
 <header>
 <h2><a href="{PDF_FILE}">{TITLE}</a></h2>
 <h3>{AUTHORS}</h3>
 <h4>Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.</h4>
 {NOTE}</header>
-<a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
-{ARXIV}{CODE}<details>
+{FORMATTED_CITE}<details>
 <summary>Show BibTeX</summary>
 <pre><code>{BIBTEX}</code></pre>
 <a href="{BIB_FILE}">Download BibTeX file</a>
@@ -146,8 +151,10 @@ report_page_content = """<article>
 <section>
 <h4>Abstract</h4>
 <p>{ABSTRACT}</p>
+<p><a href="{PDF_FILE}"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+{DOI}{ARXIV}{CODE}</p>
 <object class="pdfembed" data="{PDF_FILE}#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
-<a href="{PDF_FILE}"><img class="button" src="/images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+<span></span>
 </object>
 </section>
 </article>
@@ -157,6 +164,9 @@ arxiv_link = """<a href="{0}"><img class="button" src="../../images/arxiv-logoma
 """
 
 code_link = """<a href="{0}"><img class="button" src="../../images/github.svg" width="64" height="64" alt="Sourcecode on GitHub"></a>
+"""
+
+doi_link = """<a href="https://doi.org/{0}"><img class="button" src="../../images/doi-logo.svg" width="64" height="64" alt="DOI"></a>
 """
 
 formatted_report_listing = """<li><a href="{ABSTRACT_PAGE}">{TITLE}</a>.<br>
