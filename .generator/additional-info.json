@@ -1,29 +1,35 @@
 {
-  "VAC-TR-23-006": {
-    "code": "https://github.com/cicirello/btpe-iterations"
+  "ALG-23-006": {
+    "code": "https://github.com/cicirello/btpe-iterations",
+    "pdf-filename": "VAC-TR-23-006.pdf"
   },
   
-  "VAC-TR-20-005": {
+  "ALG-20-005": {
     "doi": "10.4108/eai.13-7-2018.163925",
     "arxiv": "https://arxiv.org/abs/1905.02752",
+    "pdf-filename": "VAC-TR-20-005.pdf",
     "citation-type": "Journal Ref",
     "citation": "Vincent A. Cicirello. 2020. Kendall tau sequence distance: Extending Kendall tau from ranks to sequences. <i>Industrial Networks and Intelligent Systems</i> 7(23), Article e1 (April 2020), 12 pages. <a href=\"https://doi.org/10.4108/eai.13-7-2018.163925\">https://doi.org/10.4108/eai.13-7-2018.163925</a>"
   },
   
-  "VAC-TR-17-004": {
+  "DIST-17-004": {
     "arxiv": "https://arxiv.org/abs/1708.05264",
-    "code": "https://github.com/cicirello/ClusterPerformanceTests"
+    "code": "https://github.com/cicirello/ClusterPerformanceTests",
+    "pdf-filename": "VAC-TR-17-004.pdf"
   },
   
-  "VAC-TR-09-003": {
+  "AI-09-003": {
+    "pdf-filename": "VAC-TR-09-003.pdf",
     "description": "We develop theoretical foundations for integrating multiple heuristics within a stochastic sampling search procedure. Such a capability is important in problem domains where several heuristics are available but none dominate across all problem instances. We view this selection problem as an online learning problem where the search framework builds models of the distributions of the quality of solutions given by the heuristics and uses those models as guidance for selecting heuristics throughout the search process. One key observation is that the distribution of solution values obtained across multiple runs of a stochastic sampling search algorithm using a strong domain heuristic is heavy-tailed, motivating the use of the Generalized Extreme Value distribution to model the performance of a search heuristic. Based on an analysis of the Max K-Armed Bandit, we develop an exploration policy for allocating trials of a stochastic sampling algorithm amongst the set of component heuristics. Built upon these foundations is our search framework, Quality Distribution Based sEArch CONtrol (QD-BEACON), which we validate on NP-Hard scheduling problems."
   },
   
-  "VAC-TR-08-002": {
+  "AGENTS-08-002": {
+    "pdf-filename": "VAC-TR-08-002.pdf",
     "description": "Computational frameworks motivated by biological systems abound, which use mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. These nature-inspired systems are often robust, effective problem solvers. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. We focus on an existing multi-agent task allocation protocol inspired by a computational model of wasp behavior."
   },
   
-  "VAC-TR-08-001": {
+  "AI-08-001": {
+    "pdf-filename": "VAC-TR-08-001.pdf",
     "description": "This paper considers integrating multiple heuristics into Value Biased Stochastic Sampling (VBSS). We developed techniques that allow VBSS to self-select which heuristic to use from a set of heuristics. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions, which leads us to the selection of the Generalized Extreme Value Distribution to model randomized heuristic performance.",
     "note": "Presented at the 40th Symposium on the Interface: Computing Science and Statistics (conference without proceedings), in Durham, NC, sponsored by the National Institute of Statistical Sciences"
   }

@@ -273,6 +273,8 @@ class Report:
 
     def _file_only(self, extension):
         """Forms the name of a file."""
+        if extension == ".pdf" and "pdf-filename" in self._fields:
+            return self._fields["pdf-filename"]
         return self._fields["number"] + extension
 
     def _find_fields(self, partial):

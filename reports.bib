@@ -1,20 +1,20 @@
-@techreport{VAC-TR-23-006,
+@techreport{ALG-23-006,
   author = {Vincent A. Cicirello},
   title = {Data Supplement to an Analysis of an Open Source Binomial Random Variate Generation Algorithm},
   institution = {Cicirello.org},
   year = {2023},
-  number = {VAC-TR-23-006},
+  number = {ALG-23-006},
   month = {October},
   url = {https://reports.cicirello.org/23/006/VAC-TR-23-006.pdf},
   abstract = {This technical report is a data supplement to ``An Analysis of an Open Source Binomial Random Variate Generation Algorithm'' published in ASEC 2023. The dataset concerns the acceptance-rejection iterations of an algorithm for generating binomial random variates. This report includes additional experimental data that was excluded from the original ASEC 2023 paper in the interests of brevity. The source code of the experiments that produced the data is open source and available via GitHub.}
 }
 
-@techreport{VAC-TR-20-005,
+@techreport{ALG-20-005,
   author = {Vincent A. Cicirello},
   title = {Kendall Tau Sequence Distance: Extending Kendall Tau from Ranks to Sequences},
   institution = {Cicirello.org},
   year = {2020},
-  number = {VAC-TR-20-005},
+  number = {ALG-20-005},
   month = {April},
   url = {https://reports.cicirello.org/20/005/VAC-TR-20-005.pdf},
   abstract = {An edit distance is a measure of the minimum cost sequence of edit operations to transform one structure into another.  Edit distance can be used as a measure of similarity as part of a pattern recognition system, with lower values of edit distance implying more similar structures. Edit distance is most commonly encountered within the context of strings, where Wagner and Fischer's string edit distance is perhaps the most well-known.  However, edit distance is not limited to strings.  For example, there are several edit distance measures for permutations, including Wagner and Fischer's string edit distance since a permutation is a special case of a string.  However, another edit distance for permutations is Kendall tau distance, which is the number of pairwise element inversions.  On permutations, Kendall tau distance is equivalent to an edit distance with adjacent swap as the edit operation. A permutation is often used to represent a total ranking over a set of elements. There exist multiple extensions of Kendall tau distance from total rankings (permutations) to partial rankings (i.e., where multiple elements may have the same rank), but none of these are suitable for computing distance between sequences. We set out to explore extending Kendall tau distance in a different direction, namely from the special case of permutations to the more general case of strings or sequences of elements from some finite alphabet.  We name our distance metric Kendall tau sequence distance, and define it as the minimum number of adjacent swaps necessary to transform one sequence into the other.  We provide two O(n lg n) algorithms for computing it, and experimentally compare their relative performance.  We also provide reference implementations of both algorithms in an open source Java library.}
@@ -35,45 +35,45 @@
   url = {https://doi.org/10.4108/eai.13-7-2018.163925}
 }
 
-@techreport{VAC-TR-17-004,
+@techreport{DIST-17-004,
   author = {Vincent A. Cicirello},
   title = {Design, Configuration, Implementation, and Performance of a Simple 32 Core Raspberry Pi Cluster},
   institution = {Cicirello.org},
   year = {2017},
-  number = {VAC-TR-17-004},
+  number = {DIST-17-004},
   month = {August},
   url = {https://reports.cicirello.org/17/004/VAC-TR-17-004.pdf},
   abstract = {In this report, I describe the design and implementation of an inexpensive, eight node, 32 core, cluster of raspberry pi single board computers, as well as the performance of this cluster on two computational tasks, one that requires significant data transfer relative to computational time requirements, and one that does not. We have two use-cases for the cluster: (a) as an educational tool for classroom usage, such as covering parallel algorithms in an algorithms course; and (b) as a test system for use during the development of parallel metaheuristics, essentially serving as a personal desktop parallel computing cluster. Our preliminary results show that the slow 100 Mbps networking of the raspberry pi significantly limits such clusters to parallel computational tasks that are either long running relative to data communications requirements, or that which requires very little internode communications.  Additionally, although the raspberry pi 3 has a quad-core processor, parallel speedup degrades during attempts to utilize all four cores of all cluster nodes for a parallel computation, likely due to resource contention with operating system level processes. However, distributing a task across three cores of each cluster node does enable linear (or near linear) speedup.}
 }
 
-@techreport{VAC-TR-09-003,
+@techreport{AI-09-003,
   author = {Vincent A. Cicirello},
   title = {Multi-heuristic Stochastic Sampling Search: Extreme Value Theory and the Max $K$-Armed Bandit},
   institution = {Cicirello.org},
   year = {2009},
-  number = {VAC-TR-09-003},
+  number = {AI-09-003},
   month = {March},
   url = {https://reports.cicirello.org/09/003/VAC-TR-09-003.pdf},
   abstract = {In this paper, we develop theoretical foundations for integrating multiple heuristics within a stochastic sampling search procedure. Such a capability is important in problem domains where several heuristics are available but none dominate across all problem instances. In order to utilize multiple heuristics, a search algorithm needs a mechanism for selecting from among the alternatives. We can view this selection problem as an online learning problem where the search framework builds models of the distributions of the quality of solutions given by the heuristics and uses those models as guidance for selecting heuristics throughout the search process. One key observation is that the distribution of solution values obtained across multiple runs of a stochastic sampling search algorithm using a strong domain heuristic is heavy-tailed. Modeling these solution quality distributions requires turning to extremal value theory. In particular, we motivate the use of a distribution known as the Generalized Extreme Value (GEV) distribution for our model of the performance of a search heuristic. We show specifically that it can be quite advantageous to abandon the more typical normality assumptions in favor of this GEV model. Secondly, we develop an exploration policy for allocating trials of a stochastic sampling algorithm amongst the set of component heuristics. This policy follows from an analysis of a new variation of the well known multiarmed bandit problem that we call the Max K-Armed Bandit. The analysis indicates that under our GEV model, a double exponentially increasing rate of trials of the stochastic sampling algorithm should be allocated to the observed best heuristic relative to the number of trials allocated to the alternative heuristics. We validate our search framework, which we call Quality Distribution Based sEArch CONtrol (QD-BEACON), empirically for two NP-Hard scheduling problems: (1) weighted tardiness scheduling and (2) resource constrained project scheduling with time windows (RCPSP/max). Our approach leads to an algorithm that is competitive with the current best heuristic algorithms for each of these problems, including finding new best solutions to some difficult instances of RCPSP/max.}
 }
 
-@techreport{VAC-TR-08-002,
+@techreport{AGENTS-08-002,
   author = {Vincent A. Cicirello},
   title = {Using Game Theory to Analyze a Biologically-Inspired Agent Coordination Mechanism},
   institution = {Cicirello.org},
   year = {2008},
-  number = {VAC-TR-08-002},
+  number = {AGENTS-08-002},
   month = {October},
   url = {https://reports.cicirello.org/08/002/VAC-TR-08-002.pdf},
   abstract = {Computational frameworks motivated by the efficiency of biological systems abound---using mechanisms adapted from models of naturally occurring behavior such as foraging, immuno-response, dominance contests, behavioral thresholds for task performance, worker recruitment, etc. Often, the motivation is as simple as that it works well for the biological system's problem and perhaps a similar mechanism can work just as well for a problem-solving framework inspired by the biology. These nature-inspired systems are often robust, effective problem solvers. In this paper, we consider the application of game theory for the analysis of biologically-inspired agent coordination mechanisms. The objective of this paper is to provide examples of how game theory can be used to explain the emergent behavior of collective problem solving systems. To illustrate, we analyze an existing multi-agent task allocation protocol motivated by a computational model of wasp behavior.}
 }
 
-@techreport{VAC-TR-08-001,
+@techreport{AI-08-001,
   author = {Vincent A. Cicirello},
   title = {Statistical Models of Multistart Randomized Heuristic Search Performance},
   institution = {Cicirello.org},
   year = {2008},
-  number = {VAC-TR-08-001},
+  number = {AI-08-001},
   month = {May},
   url = {https://reports.cicirello.org/08/001/VAC-TR-08-001.pdf},
   abstract = {The complexity of many combinatorial optimization problems often preclude the application of exact problem solving techniques as the problem is scaled to real-world size. For example, for a problem that is NP-Hard in the strong sense, any algorithm that guarantees that its solutions are optimal is going to be limited in the size of the instance that it can solve given computational limitations. Rather than requiring optimal solutions, an alternative is to favor sufficiently good solutions that can be found efficiently. One approach to this uses a randomized heuristic algorithm. This paper specifically considers an algorithm known as Value Biased Stochastic Sampling (VBSS). VBSS uses a heuristic function to bias the random generation of a proposed solution to the problem. This process is repeated some number of times and retains only the best solution found over several trials. The key to the effectiveness of VBSS is the choice of the heuristic function. The job of the heuristic function is to provide problem dependent evaluation of the choices that can be made. This evaluation is used to bias the random decisions during the problem solving process. At the time of the design of such an algorithm, it may not be obvious which of several heuristics are best. During the past few years, we have been developing techniques for allowing VBSS to self-select which heuristic to use. Our approach relies on modeling the distribution of the quality of solutions obtained by VBSS over its allocated set of restarts. This paper presents some of our analysis of potential models, including goodness of fit tests for several possible assumptions we can make about the distribution of the quality of solutions. Our analysis leads us to the selection of the Generalized Extreme Value Distribution for our models of randomized heuristic performance.}
