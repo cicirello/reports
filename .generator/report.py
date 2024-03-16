@@ -159,6 +159,10 @@ class Report:
             "''", "&quot;"
         ).replace(
             '"', "&quot;"
+        ).replace(
+            "\\rho", "&rho;"
+        ).replace(
+            "\\mu", "&mu;"
         )
 
     def title(self):

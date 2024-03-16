@@ -18,7 +18,7 @@ def load_bib_file(additional_info, bib_file="reports.bib"):
     bib_file - the BibTeX file.
     """
     reports = []
-    with open(bib_file, "r") as bib:
+    with open(bib_file, "r", encoding="utf-8") as bib:
         current = []
         for line in bib:
             if line.startswith("@techreport"):
@@ -66,7 +66,7 @@ def make_web_pages(builder, reports):
     reports - An iterable of Report objects
     """
     for r in reports:
-        with open(r.target_directory() + "/index.html", "w") as f:
+        with open(r.target_directory() + "/index.html", "w", encoding="utf-8") as f:
             f.write(builder.build_report_page(r))
 
 def make_home_page(builder, reports):
@@ -76,7 +76,7 @@ def make_home_page(builder, reports):
     builder - the PageBuilder
     reports - An iterable of Report objects
     """
-    with open("index.html", "w") as f:
+    with open("index.html", "w", encoding="utf-8") as f:
         f.write(builder.build_home_page(reports))
 
 def make_404(builder):
@@ -85,13 +85,13 @@ def make_404(builder):
     Keyword arguments:
     builder - the PageBuilder
     """
-    with open("404.html", "w") as f:
+    with open("404.html", "w", encoding="utf-8") as f:
         f.write(builder.build_404())
 
 def load_additional():
     """Loads additional-info.json which contains additional
     report metadata not otherwise in the bib file."""
-    with open(".generator/additional-info.json", "r") as f:
+    with open(".generator/additional-info.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
 def main():
