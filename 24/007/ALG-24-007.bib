@@ -1,0 +1,10 @@
+@techreport{ALG-24-007,
+  title = {On the Average Runtime of an Open Source Binomial Random Variate Generation Algorithm},
+  author = {Vincent A. Cicirello},
+  year = {2024},
+  month = {March},
+  number = {ALG-24-007},
+  institution = {Cicirello.org},
+  url = {https://reports.cicirello.org/24/007/ALG-24-007.pdf},
+  abstract = {The BTPE algorithm (Binomial, Triangle, Parallelogram, Exponential) of Kachitvichyanukul and Schmeiser is one of the faster and more widely utilized algorithms for generating binomial random variates. Cicirello's open source Java library, $\rho\mu$, includes an implementation of BTPE as well as a variety of other random number related utilities. In this report, I explore the average case runtime of the BTPE algorithm when generating random values from binomial distribution $B(n,p)$. Beginning with Kachitvichyanukul and Schmeiser's formula for the expected number of acceptance-rejection sampling iterations, I analyze the limit behavior as $n$ approaches infinity, and show that the average runtime of BTPE converges to a constant. I instrument the open source Java implementation from the $\rho\mu$ library to experimentally validate the analysis.}
+}
