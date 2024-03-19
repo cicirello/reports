@@ -1,5 +1,6 @@
 {
   "ALG-24-007": {
+    "arxiv": "https://arxiv.org/abs/2403.11018",
     "code": "https://github.com/cicirello/btpe-iterations",
     "description": "The BTPE algorithm (Binomial, Triangle, Parallelogram, Exponential) of Kachitvichyanukul and Schmeiser is one of the faster and more widely utilized algorithms for generating binomial random variates. Cicirello's open source Java library, ρμ, includes an implementation of BTPE as well as a variety of other random number related utilities. In this report, I explore the average case runtime of the BTPE algorithm when generating random values from binomial distribution B(n,p). Beginning with Kachitvichyanukul and Schmeiser's formula for the expected number of acceptance-rejection sampling iterations, I analyze the limit behavior as n approaches infinity, and show that the average runtime of BTPE converges to a constant. I instrument the open source Java implementation from the ρμ library to experimentally validate the analysis."
   },
