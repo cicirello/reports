@@ -1,5 +1,6 @@
 {
   "ALG-24-008": {
+    "arxiv": "https://arxiv.org/abs/2405.12371",
     "code": "https://github.com/cicirello/rho-mu",
     "description": "This report presents algorithms for generating small random samples without replacement. It considers two cases. It presents an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worstcase runtime of both algorithms is constant, while the worstcase runtime of common algorithms for the general case of sampling k elements from a set of n are linear in n. Java implementations of both algorithms are included in the open source library ρμ."
   },
