@@ -1,4 +1,8 @@
 {
+  "ALG-24-009": {
+    "code": "https://github.com/cicirello/ZigguratGaussian"
+  },
+  
   "ALG-24-008": {
     "arxiv": "https://arxiv.org/abs/2405.12371",
     "code": "https://github.com/cicirello/rho-mu",

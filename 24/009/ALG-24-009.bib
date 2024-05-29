@@ -1,0 +1,10 @@
+@techreport{ALG-24-009,
+  title = {Fast Gaussian Distributed Pseudorandom Number Generation in Java via the Ziggurat Algorithm},
+  author = {Vincent A. Cicirello},
+  year = {2024},
+  month = {May},
+  number = {ALG-24-009},
+  institution = {Cicirello.org},
+  url = {https://reports.cicirello.org/24/009/ALG-24-009.pdf},
+  abstract = {We report on experiments with the ziggurat algorithm for generating Gaussian distributed random numbers. The study utilizes our open source Java implementation that was introduced originally for Java 11 at a time when the Java API only provided the much slower polar method. Our Java implementation of the ziggurat algorithm is a port of the GNU Scientific Library's C implementation. Java 17 introduced a significant overhaul of pseudorandom number generation, including several modern pseudorandom number generators (PRNGs) as well as additional functionality, among which includes switching from the polar method to a modified ziggurat algorithm. In the experiments of this paper, we explore whether there is still a need for our implementation for Java 17+ applications. Our results show that Java 17's modified ziggurat is faster than our implementation for the PRNGs that support it. However, Java 17+ continues to use the polar method for the legacy PRNGs Random, SecureRandom, and ThreadLocalRandom. The linear congruential method of Java's Random class lacks the statistical properties required by Java's modified ziggurat implementation; and SecureRandom and ThreadLocalRandom unfortunately use the polar method as a side-effect of extending Random. Our implementation of the original ziggurat algorithm does not require the same statistical properties of the underlying PRNG as Java 17's optimized version, and can be used with any of these PRNGs, and is especially relevant where pre-Java 17 support is required.}
+}
