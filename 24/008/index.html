@@ -8,14 +8,14 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Algorithms for Generating Small Random Samples</title>
 <meta name="title" content="Algorithms for Generating Small Random Samples">
-<meta name="description" content="This report presents algorithms for generating small random samples without replacement. It considers two cases. It presents an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worstcase runtime of both algorithms is constant, while the worstcase runtime of common algorithms for the general case of sampling k elements from a set of n are linear in n. Java implementations of both algorithms are included in the open source library ρμ.">
+<meta name="description" content="We present algorithms for generating small random samples without replacement. We consider two cases. We present an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worst-case runtime of both algorithms is constant, while the worst-case runtimes of common algorithms for the general case of sampling k elements from a set of n increase with n. Java implementations of both algorithms are included in the open source library ρμ.">
 <link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
 <meta property="og:url" content="https://reports.cicirello.org/24/008/">
 <meta property="og:title" content="Algorithms for Generating Small Random Samples">
 <meta property="og:image" content="https://reports.cicirello.org/24/008/ALG-24-008.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="672">
-<meta property="og:description" content="This report presents algorithms for generating small random samples without replacement. It considers two cases. It presents an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worstcase runtime of both algorithms is constant, while the worstcase runtime of common algorithms for the general case of sampling k elements from a set of n are linear in n. Java implementations of both algorithms are included in the open source library ρμ.">
+<meta property="og:description" content="We present algorithms for generating small random samples without replacement. We consider two cases. We present an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worst-case runtime of both algorithms is constant, while the worst-case runtimes of common algorithms for the general case of sampling k elements from a set of n increase with n. Java implementations of both algorithms are included in the open source library ρμ.">
 <meta name="citation_title" content="Algorithms for Generating Small Random Samples">
 <meta name="citation_author" content="Vincent A. Cicirello">
 <meta name="citation_publication_date" content="2024">
@@ -84,9 +84,24 @@ pre {overflow-x:auto;}
 <h3><a href="https://www.cicirello.org/">Vincent A. Cicirello</a></h3>
 <h4>Technical Report ALG-24-008, Cicirello.org, May 2024.</h4>
 </header>
+<section>
+<h4>Journal Ref</h4>
+<p>Vincent A. Cicirello. 2024. Algorithms for Generating Small Random Samples. <i>Software: Practice and Experience</i>, September 2024. <a href="https://doi.org/10.1002/spe.3379">https://doi.org/10.1002/spe.3379</a></p>
+</section>
 <details>
 <summary>Show BibTeX</summary>
-<pre><code>@techreport{ALG-24-008,
+<pre><code>@article{cicirello2024spe,
+  title = {Algorithms for Generating Small Random Samples},
+  author = {Vincent A. Cicirello},
+  journal = {Software: Practice and Experience},
+  year = {2024},
+  month = {September},
+  pages = {1--9},
+  doi = {10.1002/spe.3379},
+  url = {https://doi.org/10.1002/spe.3379}
+}
+
+@techreport{ALG-24-008,
   title = {Algorithms for Generating Small Random Samples},
   author = {Vincent A. Cicirello},
   year = {2024},
@@ -100,10 +115,11 @@ pre {overflow-x:auto;}
 </details>
 <section>
 <h4>Abstract</h4>
-<p>This report presents algorithms for generating small random samples without replacement. It considers two cases. It presents an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worstcase runtime of both algorithms is constant, while the worstcase runtime of common algorithms for the general case of sampling k elements from a set of n are linear in n. Java implementations of both algorithms are included in the open source library &rho;&mu;.</p>
+<p>We present algorithms for generating small random samples without replacement. We consider two cases. We present an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worst-case runtime of both algorithms is constant, while the worst-case runtimes of common algorithms for the general case of sampling k elements from a set of n increase with n. Java implementations of both algorithms are included in the open source library &rho;&mu;.</p>
 <p><a href="ALG-24-008.pdf"><img src="../../images/pdf-button.svg" width="51" height="64" alt="Download PDF"></a>
+<a href="https://doi.org/10.1002/spe.3379"><img class="button" src="../../images/doi-logo.svg" width="64" height="64" alt="DOI"></a>
 <a href="https://arxiv.org/abs/2405.12371"><img class="button" src="../../images/arxiv-logomark.svg" width="43" height="64" alt="Preprint on arXiv"></a>
-<a href="https://github.com/cicirello/rho-mu"><img class="button" src="../../images/github.svg" width="64" height="64" alt="Sourcecode on GitHub"></a>
+<a href="https://github.com/cicirello/small-sample-experiments"><img class="button" src="../../images/github.svg" width="64" height="64" alt="Sourcecode on GitHub"></a>
 </p>
 <object class="pdfembed" data="ALG-24-008.pdf#view=FitH&pagemode=none" type="application/pdf" width="850" height="1100">
 <span></span>
