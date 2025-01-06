@@ -10,7 +10,7 @@
     "code": "https://github.com/cicirello/small-sample-experiments",
     "description": "We present algorithms for generating small random samples without replacement. We consider two cases. We present an algorithm for sampling a pair of distinct integers, and an algorithm for sampling a triple of distinct integers. The worst-case runtime of both algorithms is constant, while the worst-case runtimes of common algorithms for the general case of sampling k elements from a set of n increase with n. Java implementations of both algorithms are included in the open source library ρμ.",
     "citation-type": "Journal Ref",
-    "citation": "Vincent A. Cicirello. 2024. Algorithms for Generating Small Random Samples. <i>Software: Practice and Experience</i>, September 2024. <a href=\"https://doi.org/10.1002/spe.3379\">https://doi.org/10.1002/spe.3379</a>"
+    "citation": "Vincent A. Cicirello. 2025. Algorithms for Generating Small Random Samples. <i>Software: Practice and Experience</i>, February 2025, 55(2): 298-306. <a href=\"https://doi.org/10.1002/spe.3379\">https://doi.org/10.1002/spe.3379</a>"
   },
   
   "ALG-24-007": {
