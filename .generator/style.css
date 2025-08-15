@@ -26,6 +26,7 @@ section {margin-top: 30px;}
 #copyright {text-align: center; color: #862d2d;}
 .pdfembed {width:96%; height:123vw; padding:16px 2%;}
 img.button {margin:0px 0px 0px 12px;}
+.footer-link { padding: 0 10px 0 10px; }
 @media screen and (max-width:600px){
 nav div a:not(.active) {display: none;}
 #toggle:checked ~ div a:not(.active) {display: block;}

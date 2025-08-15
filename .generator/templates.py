@@ -188,8 +188,9 @@ Technical Report {REPORT_NUM}, {INSTITUTION}, {MONTH} {YEAR}.<br>
 <a href="{PDF_FILE}">[PDF]</a> <a href="{BIB_FILE}">[BIB]</a>{OTHERLINKS}</li>"""
 
 page_footer = """<footer>
-<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
-<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<p><small><a class="footer-link" href="https://www.cicirello.org/e/">Contact</a>
+<strong>&#x25C6;</strong>
+<a class="footer-link" href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
 <div id="copyright"><small>Copyright &copy; 2008-{CURRENT_YEAR} <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
 </footer>
 </body>
