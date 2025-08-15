@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <link rel="canonical" href="https://reports.cicirello.org/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-wDhQNQeA3QCMAcoPs1LO+TUwUbNoRAyYm7H+MJEdV0U='; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src 'sha256-F9OgbF8OKkz7zuVkDFerOkwedCOd6NmFouoidUqdIvs=' https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Cicirello.org Technical Reports</title>
 <meta name="title" content="Cicirello.org Technical Reports">
@@ -45,6 +45,7 @@ section {margin-top: 30px;}
 #copyright {text-align: center; color: #862d2d;}
 .pdfembed {width:96%; height:123vw; padding:16px 2%;}
 img.button {margin:0px 0px 0px 12px;}
+.footer-link { padding: 0 10px 0 10px; }
 @media screen and (max-width:600px){
 nav div a:not(.active) {display: none;}
 #toggle:checked ~ div a:not(.active) {display: block;}
@@ -58,6 +59,7 @@ th {text-align:left;color: #862d2d;}
 td, th {padding:5px; border: 1px solid #862d2d;}
 pre {overflow-x:auto;}
 </style>
+<script async src="https://www.cicirello.org/js/dynamic_loader.js" integrity="sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm" crossorigin="anonymous"></script>
 </head>
 <body>
 <header id="siteheader">
@@ -179,8 +181,9 @@ Technical Report AI-08-001, Cicirello.org, May 2008.<br>
 </ul>
 </article>
 <footer>
-<p><small><a rel="nofollow" href="https://www.cicirello.org/e/">Contact</a></small></p>
-<p><small><a href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
+<p><small><a class="footer-link" href="https://www.cicirello.org/e/">Contact</a>
+<strong>&#x25C6;</strong>
+<a class="footer-link" href="https://www.cicirello.org/policy/privacy/">Privacy Policy</a></small></p>
 <div id="copyright"><small>Copyright &copy; 2008-2025 <a href="https://www.cicirello.org/">Vincent A. Cicirello</a>.</small></div>
 </footer>
 </body>
