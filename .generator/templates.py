@@ -64,7 +64,7 @@ title_line = """<text x="1280" y="{0}" lengthAdjust="spacingAndGlyphs" textLengt
 page_head_start = """<meta charset=utf-8>
 <link rel="canonical" href="{CANONICAL}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="object-src {OBJECTSRC}; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src '{STYLEHASH}' https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
+<meta http-equiv="Content-Security-Policy" content="object-src {OBJECTSRC}; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{TITLE}</title>
 <meta name="title" content="{TITLE}">

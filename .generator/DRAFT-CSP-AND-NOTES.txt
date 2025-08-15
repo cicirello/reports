@@ -1,6 +1,6 @@
 - No need to change 404 page, as there won't be ads there.
 
-<meta http-equiv="Content-Security-Policy" content="object-src {OBJECTSRC}; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src '{STYLEHASH}' https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
+<meta http-equiv="Content-Security-Policy" content="object-src {OBJECTSRC}; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
 
 Where:
 OBJECTSRC is 'none' on homepage, and the report pdf file on a report page.
@@ -20,7 +20,7 @@ Content-Security-Policy:
   script-src 'nonce-{random}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:;
   base-uri 'none';
   font-src fonts.gstatic.com;
-  style-src '{STYLEHASH}' https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline';
+  style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline';
 
 
 NOTE THAT SOME OF MY PAGES MIGHT NEED MORE SPECIFIC object-src
