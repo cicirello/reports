@@ -82,7 +82,8 @@ class PageBuilder:
         return self._build_head(
             head_info,
             self._build_citation_tags(report),
-            " frame-src {0}; object-src {0};".format(
+            # obj-src for CSP
+            "{0}".format(
                 "'self'" if VIEW_LOCAL else report.pdf_url()
             )
         ) + self._build_content_header(
@@ -139,7 +140,7 @@ class PageBuilder:
             AUTHORS="\n".join(authors)
         )
 
-    def _build_head(self, head_info, citation_tags=None, object_src_policy=""):
+    def _build_head(self, head_info, citation_tags=None, object_src_policy="'none'"):
         return "<!DOCTYPE html>\n<html lang=en>\n<head>\n" + (
                 page_head_start.format(
                     STYLEHASH=head_info["style-hash"],
@@ -147,12 +148,13 @@ class PageBuilder:
                     TITLE=head_info["title"],
                     DESCRIPTION=head_info["description"],
                     SOCIALPREVIEW=head_info["social-preview"],
-                    OBJECTSRC=object_src_policy
+                    OBJECTSRC=object_src_policy,
+                    SCRIPTHASH=hash_of_adsense_loader
                 ) + (
                     citation_tags if citation_tags else ""
-                ) + self._style_block()
-            ) + "\n</head>\n"
+                ) + self._style_block() + script_loader 
+            ) + "</head>\n"
 
     def _style_block(self):
-        return "<style>\n" + self._style + "</style>"
+        return "<style>\n" + self._style + "</style>" 
         

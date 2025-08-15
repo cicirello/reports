@@ -1,0 +1,24 @@
+This is the OLD CSP from before adding adsense:
+
+IN page_head_start
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';{OBJECTSRC} img-src 'self'; style-src '{STYLEHASH}'; base-uri 'none'; form-action 'none';">
+
+IN template_404
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src '{STYLEHASH}'; base-uri 'none'; form-action 'none';">
+
+
+SINCE NO ADS ON 404 PAGE:
+Can keep the above.
+
+
+OLD EXAMPLE OF REPORT PAGE
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://reports.cicirello.org/24/009/ALG-24-009.pdf; object-src https://reports.cicirello.org/24/009/ALG-24-009.pdf; img-src 'self'; style-src 'sha256-wDhQNQeA3QCMAcoPs1LO+TUwUbNoRAyYm7H+MJEdV0U='; base-uri 'none'; form-action 'none';">
+
+OLD FROM MAIN PAGE
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-wDhQNQeA3QCMAcoPs1LO+TUwUbNoRAyYm7H+MJEdV0U='; base-uri 'none'; form-action 'none';">
+
+
+OLD FROM 404
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'sha256-wDhQNQeA3QCMAcoPs1LO+TUwUbNoRAyYm7H+MJEdV0U='; base-uri 'none'; form-action 'none';">

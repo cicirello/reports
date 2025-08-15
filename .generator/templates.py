@@ -1,10 +1,16 @@
 # Site generator for https://reports.cicirello.org/
-# Copyright (c) 2024 Vincent A. Cicirello. All rights reserved.
+# Copyright (c) 2024-2025 Vincent A. Cicirello. All rights reserved.
 #
 # This site generator is almost certainly useless to anyone other than me.
 # It is highly customized to generate one specific website. Therefore, I am
 # not licensing it to others. Notice the "All rights reserved" in the
 # copyright notice at the top.
+
+hash_of_adsense_loader="sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm"
+
+script_loader="""
+<script async src="https://www.cicirello.org/js/dynamic_loader.js" integrity="sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm" crossorigin="anonymous"></script>
+"""
 
 url_root = "https://reports.cicirello.org/"
 site_title = "Cicirello.org Technical Reports"
@@ -58,7 +64,7 @@ title_line = """<text x="1280" y="{0}" lengthAdjust="spacingAndGlyphs" textLengt
 page_head_start = """<meta charset=utf-8>
 <link rel="canonical" href="{CANONICAL}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none';{OBJECTSRC} img-src 'self'; style-src '{STYLEHASH}'; base-uri 'none'; form-action 'none';">
+<meta http-equiv="Content-Security-Policy" content="object-src {OBJECTSRC}; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src '{STYLEHASH}' https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{TITLE}</title>
 <meta name="title" content="{TITLE}">
