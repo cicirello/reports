@@ -6,10 +6,10 @@
 # not licensing it to others. Notice the "All rights reserved" in the
 # copyright notice at the top.
 
-hash_of_adsense_loader="sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm"
+hash_of_adsense_loader="sha384-i9On6a8pULeN0XD9l3J0gZMnvbggxt4HiEpfuxzePuYS3uDQJ/7mbPyYPfqe/wSg"
 
 script_loader="""
-<script async src="https://www.cicirello.org/js/dynamic_loader.js" integrity="sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm" crossorigin="anonymous"></script>
+<script async src="https://www.cicirello.org/js/dynamic_loader.min.js" integrity="sha384-i9On6a8pULeN0XD9l3J0gZMnvbggxt4HiEpfuxzePuYS3uDQJ/7mbPyYPfqe/wSg" crossorigin="anonymous"></script>
 """
 
 url_root = "https://reports.cicirello.org/"

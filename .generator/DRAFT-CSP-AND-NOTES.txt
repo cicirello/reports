@@ -1,5 +1,11 @@
 - No need to change 404 page, as there won't be ads there.
 
+
+
+--------------------------------------------
+FULL SCRIPT (not minified)
+--------------------------------------------
+
 POLICY FOR REPORTS SITE:
 
 <meta http-equiv="Content-Security-Policy" content="object-src {OBJECTSRC}; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none';  style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
@@ -16,7 +22,6 @@ WITH CURRENT HASH
 
 <meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none'; style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
 
-
 SCRIPT:
 
 <script async src="https://www.cicirello.org/js/dynamic_loader.js" integrity="sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm" crossorigin="anonymous"></script>
@@ -25,6 +30,35 @@ SCRIPT:
 SCRIPTHASH is "sha384-fVIYQq2SdvU+F0Ykt9A1f0/8by1AOvMDZEmSKvrmF+hgUggGeckJNCdWe/FQkpUm"
 
 Calculated at https://www.srihash.org/
+---------------------------------------------
+
+
+--------------------------------------------
+MINIFIED SCRIPT
+--------------------------------------------
+
+POLICY FOR PROJECT PAGES:
+
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src '{SCRIPTHASH}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none'; style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
+
+WITH CURRENT HASH
+
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; script-src 'sha384-i9On6a8pULeN0XD9l3J0gZMnvbggxt4HiEpfuxzePuYS3uDQJ/7mbPyYPfqe/wSg' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:; base-uri 'none'; style-src https://*.doubleclick.net https://*.googlesyndication.com https://fonts.googleapis.com 'unsafe-inline'; font-src fonts.gstatic.com;">
+
+SCRIPT:
+
+<script async src="https://www.cicirello.org/js/dynamic_loader.min.js" integrity="sha384-i9On6a8pULeN0XD9l3J0gZMnvbggxt4HiEpfuxzePuYS3uDQJ/7mbPyYPfqe/wSg" crossorigin="anonymous"></script>
+
+SCRIPTHASH:
+"sha384-i9On6a8pULeN0XD9l3J0gZMnvbggxt4HiEpfuxzePuYS3uDQJ/7mbPyYPfqe/wSg"
+
+Calculated at https://www.srihash.org/
+
+--------------------------------------------
+
+
+
+
 
 -------------------------
 DRAFT
