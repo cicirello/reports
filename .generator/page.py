@@ -1,5 +1,5 @@
 # Site generator for https://reports.cicirello.org/
-# Copyright (c) 2024 Vincent A. Cicirello. All rights reserved.
+# Copyright (c) 2024-2025 Vincent A. Cicirello. All rights reserved.
 #
 # This site generator is almost certainly useless to anyone other than me.
 # It is highly customized to generate one specific website. Therefore, I am
@@ -36,7 +36,7 @@ class PageBuilder:
             STYLEHASH=self._style_hash,
             STYLE=self._style_block(),
             CONTENT_HEADER=content_header.format(
-                HEADER_SVG="images/404.svg",
+                HEADER_SVG="/images/404.svg",
                 PAGE_TITLE="404 - File not found",
                 ACTIVE=""
                 )
