@@ -57,7 +57,10 @@ Calculated at https://www.srihash.org/
 --------------------------------------------
 
 
-
+-------------------------
+HASH FOR INLINE MANUAL ADS
+-------------------------
+'sha384-d4YOhBtxn1YZo6bjT3h8O9J9lOxNJ4OIauaaKOXGw5bBUhDe+lDgB4QJNNwZONeu'
 
 
 -------------------------
